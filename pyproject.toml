@@ -1,0 +1,26 @@
+[project]
+name = "mtuci-private-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "MisterEblan", email = "boy4rov.da@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.14.2",
+    "httpx>=0.28.1",
+    "pydantic>=2.12.4",
+    "pydantic-settings>=2.12.0",
+    "pytest-asyncio>=1.3.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.7,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+]
