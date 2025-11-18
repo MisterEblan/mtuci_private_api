@@ -50,7 +50,7 @@ def auth_service(
 
 @pytest.fixture
 async def auth_client(
-        auth_service: AuthService
+    auth_service: AuthService
 ) -> AsyncClient:
     await auth_service.auth()
 

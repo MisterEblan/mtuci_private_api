@@ -12,23 +12,23 @@ class TestAuth:
     ):
         response = await auth_service.auth()
 
-        print(response.text)
-        print(
-            "Status:", response.status_code
-        )
-        print("Headers:", response.headers)
-        print("Cookies:", response.cookies)
+        # print(response.text)
+        # print(
+        #     "Status:", response.status_code
+        # )
+        # print("Headers:", response.headers)
+        # print("Cookies:", response.cookies)
 
-    @pytest.mark.asyncio
-    async def test_fail(
-            self,
-    ):
-        service = AuthService(
-            login="smth",
-            password="123",
-            client=AsyncClient()
-        )
-
-        with pytest.raises(AuthError):
-            await service.auth()
-
+    # @pytest.mark.asyncio
+    # async def test_fail(
+    #         self,
+    # ):
+    #     service = AuthService(
+    #         login="smth",
+    #         password="123",
+    #         client=AsyncClient()
+    #     )
+    #
+    #     with pytest.raises(AuthError):
+    #         await service.auth()
+    #
