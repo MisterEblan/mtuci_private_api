@@ -1,5 +1,6 @@
-from .mtuci import Attendance
+from .mtuci import Attendance, User
 
 __all__ = [
-    "Attendance"
+    "Attendance",
+    "User"
 ]

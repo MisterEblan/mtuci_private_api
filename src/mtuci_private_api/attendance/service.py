@@ -35,7 +35,9 @@ class AttendanceService:
             json=body
         )
 
-        return self._parse(response.json())
+        data = response.json()
+
+        return self._parse(data)
 
     async def get_subject_skips(
         self,
@@ -43,26 +45,39 @@ class AttendanceService:
         subject_name: str
     ) -> int:
         body = {
-            "processor": "getData_ArrayScoreStudenLessonAttendance",
-            "referrer": "student/attendance",
-            "Дисциплина": {
-                "catalog": "Дисциплины",
-                "name": subject_name,
-                "type": "CatalogRef",
-                "uid": subject_uid
-            }
+            "processor": "getArray_ArrayDicsiplinesStudentAttendance",
+            "referrer": "/student/attendance",
+            "НомерСтраницы": 0
         }
 
-        response = await self.client.get(
-            url=f"{app_config.mtuci_url}/api/timetable/get",
-            params={
-                "value": "БИК2404",
-                "month": 10,
-                "type": "group"
-            }
+        response = await self.client.post(
+            url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
+            json=body
+        )
+        data = response.json()
+
+        params = self._get_params(data)
+        params["Дисциплина"] = {
+            "type": "CatalogRef",
+            "catalog": "Дисциплины",
+            "uid": subject_uid,
+            "name": subject_name
+        }
+
+        del body["НомерСтраницы"]
+        body["processor"] = "getData_ArrayScoreStudenLessonAttendance"
+        body = {
+            **body,
+            **params
+        }
+
+        response = await self.client.post(
+            url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
+            json=body
         )
 
         return response
+
         
     def _parse(
         self,
@@ -109,3 +124,25 @@ class AttendanceService:
             result.append(attendance)
 
         return result
+
+    def _get_params(self, raw_data: dict[str, Any]) -> dict[str, Any]:
+        # import jon
+        # print(
+        #     json.dumps(raw_data, indent=4, ensure_ascii=False)
+        # )
+        response = raw_data.get(
+            "data", {}
+        ).get("Ответ", [])
+
+        if not response:
+            raise Exception("Invalid Response")
+
+        params_structure = response[0].get(
+            "СтруктураПараметров", {}
+        )
+        if not (command := params_structure.get("command", [])):
+            raise Exception("Invalid Response")
+
+        command_params = command[0].get("Параметры команды", {})
+
+        return command_params

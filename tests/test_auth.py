@@ -1,5 +1,6 @@
 from httpx import AsyncClient
-from src.mtuci_private_api.auth import AuthService, AuthError
+from src.mtuci_private_api.auth import AuthService
+from src.mtuci_private_api.errors import AuthError
 import pytest
 
 class TestAuth:

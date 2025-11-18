@@ -3,7 +3,7 @@
 from typing import Any
 from httpx import URL, AsyncClient, Response
 
-from .errors import AuthError
+from ..errors import AuthError
 from ..config import app_config
 
 from bs4 import BeautifulSoup
@@ -96,7 +96,7 @@ class AuthService:
         return {
             "username": self.login,
             "password": self.password,
-            "rememberMe": True,
+            "rememberMe": "on",
             "credentialId": ""
         }
 
@@ -125,7 +125,6 @@ class AuthService:
             Ответ от сервера после первичного входа.
         """
         body = self._make_body()
-
         response_1 = await self.client.post(
             url=app_config.mtuci_url + \
                 "/bvzauth/realms/master/login-actions/authenticate",
@@ -135,6 +134,7 @@ class AuthService:
         raw = response_1.cookies.get("__js_p_")
 
         if not raw:
+            print(response_1.text)
             raise AuthError("Cookies not received")
 
         raw_splitted = raw.split(",")

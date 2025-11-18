@@ -10,10 +10,10 @@ class Attendance(BaseModel):
         attendance_percentage: процент посещений.
         skips: количество пропусков
     """
-    uid: str | None = None
-    subject_name: str
+    uid:                   str | None = None
+    subject_name:          str
     attendance_percentage: float
-    skips: int | None = None
+    skips:                 int | None = None
 
 class User(BaseModel):
     """Информация о студенте
@@ -22,10 +22,11 @@ class User(BaseModel):
         uid: идентификатор.
         department: факультет.
         group: группа.
-        course: курс (первый, второй и т.д.)
+        course: курс (первый, второй и т.д.).
+        speciality: специальность.
     """
-
-    uid: str | None
+    uid:        str | None
     department: str
-    group: str
-    course: str
+    group:      str
+    course:     str
+    speciality: str

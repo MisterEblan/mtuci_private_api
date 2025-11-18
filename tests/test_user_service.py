@@ -1,5 +1,4 @@
 from src.mtuci_private_api.user import UserService
-from src.mtuci_private_api.models import User
 
 class TestUserService:
 
@@ -9,6 +8,12 @@ class TestUserService:
     ):
         info = await user_service.get_user_info()
 
-        assert isinstance(
-            info, User
-        )
+        print(info)
+        msg = "Ожидалось, что будет получен {}"
+
+        assert info
+        assert info.uid,        msg.format("uid")
+        assert info.department, msg.format("факультет")
+        assert info.course,     msg.format("курс")
+        assert info.group,      msg.format("группа")
+        assert info.speciality, msg.format("специальность")

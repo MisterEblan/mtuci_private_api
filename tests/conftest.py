@@ -1,8 +1,11 @@
 import pytest
-from mtuci_private_api.attendance import AttendanceService
+from src.mtuci_private_api.attendance import AttendanceService
+from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AuthService
-from httpx import AsyncClient
+from src.mtuci_private_api.models import User
+from httpx import AsyncClient, Cookies
+from os import getenv
 
 @pytest.fixture
 def mtuci_login() -> str:
@@ -24,7 +27,10 @@ def client() -> AsyncClient:
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.5",
             "Accept-Encoding": "gzip, deflate, br",
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
         },
+        # cookies=Cookies(),
         follow_redirects=True
     )
 
@@ -56,4 +62,28 @@ async def attendance_service(
 ) -> AttendanceService:
     return AttendanceService(
         client=auth_client
+    )
+
+@pytest.fixture
+async def user_service(
+        auth_client: AsyncClient
+) -> UserService:
+    return UserService(
+        client=auth_client
+    )
+
+@pytest.fixture
+def user() -> User:
+    uid = getenv("USER_UID", "")
+    dep = getenv("USER_DEP", "")
+    group = getenv("USER_GROUP", "")
+    course = getenv("USER_COURSE", "")
+    spec   = getenv("USER_SPEC", "")
+
+    return User(
+        uid=uid,
+        department=dep,
+        group=group,
+        course=course,
+        speciality=spec
     )
