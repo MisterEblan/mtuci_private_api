@@ -1,3 +1,5 @@
+"""Сервис получения информации о пользователе"""
+
 from typing import Any
 from httpx import AsyncClient
 
@@ -6,6 +8,11 @@ from ..models.mtuci import User
 from ..config import app_config
 
 class UserService:
+    """Сервис для получения информации о пользователе
+
+    Attributes:
+        client: клиент для HTTP-запросов.
+    """
 
     def __init__(
         self,

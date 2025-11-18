@@ -3,6 +3,8 @@
 from typing import Any
 from httpx import AsyncClient
 
+from ..errors import GetAttendanceError
+
 from ..models import Attendance
 from ..config import app_config
 
@@ -89,13 +91,13 @@ class AttendanceService:
 
         response_ = data.get("Ответ", {})
         if not (table := response_.get("ТаблицаДанных", [])):
-            raise Exception("Invalid Response")
+            raise GetAttendanceError("Invalid Response: Ответ wasn't found")
 
         count = 0
         for subject in table:
             if not subject.get("Отметка", False):
                 count += 1
-        
+
         return count
 
     async def _parse(
@@ -113,7 +115,7 @@ class AttendanceService:
         data = attendance_data.get("data", {})
 
         if not (data := data.get("Ответ", [])):
-            raise Exception("Invalid Response")
+            raise GetAttendanceError("Invalid Response: Ответ wasn't found")
 
         data = data[0].get("Содержимое", {})
 
@@ -158,13 +160,13 @@ class AttendanceService:
         ).get("Ответ", [])
 
         if not response:
-            raise Exception("Invalid Response")
+            raise GetAttendanceError("Invalid Response: Ответ wasn't found")
 
         params_structure = response[0].get(
             "СтруктураПараметров", {}
         )
         if not (command := params_structure.get("command", [])):
-            raise Exception("Invalid Response")
+            raise GetAttendanceError("Invalid Response: command wasn't found")
 
         command_params = command[0].get("ПараметрыКоманды", {})
 

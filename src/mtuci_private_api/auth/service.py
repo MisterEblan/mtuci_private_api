@@ -1,7 +1,7 @@
 """Сервис аутентфикации"""
 
 from typing import Any
-from httpx import URL, AsyncClient, Response
+from httpx import AsyncClient, Response
 
 from ..errors import AuthError
 from ..config import app_config

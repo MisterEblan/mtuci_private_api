@@ -1,3 +1,5 @@
+"""Модуль для работы с аутентификацией"""
+
 from .service import AuthService
 
 __all__ = [

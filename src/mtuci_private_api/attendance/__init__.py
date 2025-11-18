@@ -1,3 +1,5 @@
+"""Модуль для работы с посещаемостью"""
+
 from .service import AttendanceService
 
 __all__ = [
