@@ -19,9 +19,9 @@ class TestAttendanceService:
     ):
         attendance = await attendance_service.get_attendance()
 
-        # print(
-        #     attendance
-        # )
+        print(
+            json.dumps(attendance, indent=2, ensure_ascii=False, default=dict)
+        )
 
         assert attendance
 
@@ -37,4 +37,5 @@ class TestAttendanceService:
             subject_name
         )
 
-        print(skips.text)
+        print("Skips:", skips)
+        assert skips

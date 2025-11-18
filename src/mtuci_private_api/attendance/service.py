@@ -37,13 +37,22 @@ class AttendanceService:
 
         data = response.json()
 
-        return self._parse(data)
+        return await self._parse(data)
 
     async def get_subject_skips(
         self,
         subject_uid: str,
         subject_name: str
     ) -> int:
+        """Получает количество пропусков по предмету
+
+        Args:
+            subject_uid: идентификатор предмета.
+            subject_name: название предмета.
+
+        Returns:
+            Количество пропусков.
+        """
         body = {
             "processor": "getArray_ArrayDicsiplinesStudentAttendance",
             "referrer": "/student/attendance",
@@ -76,10 +85,20 @@ class AttendanceService:
             json=body
         )
 
-        return response
+        data = response.json().get("data", {})
 
+        response_ = data.get("Ответ", {})
+        if not (table := response_.get("ТаблицаДанных", [])):
+            raise Exception("Invalid Response")
+
+        count = 0
+        for subject in table:
+            if not subject.get("Отметка", False):
+                count += 1
         
-    def _parse(
+        return count
+
+    async def _parse(
         self,
         attendance_data: dict[str, Any]
     ) -> list[Attendance]:
@@ -115,10 +134,18 @@ class AttendanceService:
                     .get("uid", None)
                 )
 
+            skips = None
+            if name and uid:
+                skips = await self.get_subject_skips(
+                    subject_uid=uid,
+                    subject_name=name
+                )
+
             attendance = Attendance(
                 uid=uid,
                 subject_name=name,
-                attendance_percentage=percent
+                attendance_percentage=percent,
+                skips=skips
             )
 
             result.append(attendance)
@@ -126,10 +153,6 @@ class AttendanceService:
         return result
 
     def _get_params(self, raw_data: dict[str, Any]) -> dict[str, Any]:
-        # import jon
-        # print(
-        #     json.dumps(raw_data, indent=4, ensure_ascii=False)
-        # )
         response = raw_data.get(
             "data", {}
         ).get("Ответ", [])
@@ -143,6 +166,6 @@ class AttendanceService:
         if not (command := params_structure.get("command", [])):
             raise Exception("Invalid Response")
 
-        command_params = command[0].get("Параметры команды", {})
+        command_params = command[0].get("ПараметрыКоманды", {})
 
         return command_params
