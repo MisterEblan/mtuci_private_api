@@ -30,3 +30,4 @@ class TestAuth:
 
         with pytest.raises(AuthError):
             await service.auth()
+

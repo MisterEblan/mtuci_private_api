@@ -4,6 +4,14 @@ import json
 
 class TestAttendanceService:
 
+    @pytest.fixture
+    def subject_uid(self) -> str:
+        return "5a134f6a-35d1-11ee-8400-6cb3115e8254"
+
+    @pytest.fixture
+    def subject_name(self) -> str:
+        return "Основы работы с измерительной техникой"
+
     @pytest.mark.asyncio
     async def test_get_attendance(
         self,
@@ -11,8 +19,22 @@ class TestAttendanceService:
     ):
         attendance = await attendance_service.get_attendance()
 
-        print(
-            attendance
-        )
+        # print(
+        #     attendance
+        # )
 
         assert attendance
+
+    @pytest.mark.asyncio
+    async def test_get_subject_skips(
+        self,
+        attendance_service: AttendanceService,
+        subject_uid: str,
+        subject_name: str
+    ):
+        skips = await attendance_service.get_subject_skips(
+            subject_uid,
+            subject_name
+        )
+
+        print(skips.text)

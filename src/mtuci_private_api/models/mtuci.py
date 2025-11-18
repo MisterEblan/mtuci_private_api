@@ -14,3 +14,18 @@ class Attendance(BaseModel):
     subject_name: str
     attendance_percentage: float
     skips: int | None = None
+
+class User(BaseModel):
+    """Информация о студенте
+
+    Attributes:
+        uid: идентификатор.
+        department: факультет.
+        group: группа.
+        course: курс (первый, второй и т.д.)
+    """
+
+    uid: str | None
+    department: str
+    group: str
+    course: str

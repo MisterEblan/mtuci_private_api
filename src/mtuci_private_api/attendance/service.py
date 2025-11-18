@@ -1,3 +1,5 @@
+"""Сервис посещаемости"""
+
 from typing import Any
 from httpx import AsyncClient
 
@@ -5,6 +7,11 @@ from ..models import Attendance
 from ..config import app_config
 
 class AttendanceService:
+    """Сервис посещаемости
+
+    Attributes:
+        client: клиент для HTTP.
+    """
 
     def __init__(
         self,
@@ -30,6 +37,33 @@ class AttendanceService:
 
         return self._parse(response.json())
 
+    async def get_subject_skips(
+        self,
+        subject_uid: str,
+        subject_name: str
+    ) -> int:
+        body = {
+            "processor": "getData_ArrayScoreStudenLessonAttendance",
+            "referrer": "student/attendance",
+            "Дисциплина": {
+                "catalog": "Дисциплины",
+                "name": subject_name,
+                "type": "CatalogRef",
+                "uid": subject_uid
+            }
+        }
+
+        response = await self.client.get(
+            url=f"{app_config.mtuci_url}/api/timetable/get",
+            params={
+                "value": "БИК2404",
+                "month": 10,
+                "type": "group"
+            }
+        )
+
+        return response
+        
     def _parse(
         self,
         attendance_data: dict[str, Any]
