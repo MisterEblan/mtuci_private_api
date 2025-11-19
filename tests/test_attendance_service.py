@@ -1,4 +1,5 @@
 from src.mtuci_private_api.attendance import AttendanceService
+from unittest.mock import patch, MagicMock
 import pytest
 import json
 
@@ -24,18 +25,3 @@ class TestAttendanceService:
         )
 
         assert attendance
-
-    # @pytest.mark.asyncio
-    # async def test_get_subject_skips(
-    #     self,
-    #     attendance_service: AttendanceService,
-    #     subject_uid: str,
-    #     subject_name: str
-    # ):
-    #     skips = await attendance_service.get_subject_skips(
-    #         subject_uid,
-    #         subject_name
-    #     )
-    #
-    #     print("Skips:", skips)
-    #     assert skips

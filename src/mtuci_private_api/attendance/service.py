@@ -3,7 +3,14 @@
 from typing import Any
 from httpx import AsyncClient
 
-from .parsers.base import Parser
+from .http import BaseHttpClient, HttpClient, Method
+from .http.request_factory import ProcessorRequestFactory
+
+from .parsers import (
+    AttendanceListParser,
+    SubjectParamsParser,
+    SkipsParser
+)
 
 from ..errors import GetAttendanceError, ParseError
 
@@ -20,16 +27,10 @@ class AttendanceService:
     def __init__(
         self,
         client: AsyncClient,
-        attendance_list_parser: Parser[
-            dict[str, Any], list[Attendance]
-        ],
-        skips_parser: Parser[dict[str, Any], int],
-        params_parser: Parser[dict[str, Any], dict[str, Any]]
     ):
-        self.client = client
-        self.attendance_list_parser = attendance_list_parser
-        self.skips_parser = skips_parser
-        self.params_parser = params_parser
+        self.client: HttpClient = BaseHttpClient(
+            session=client
+        )
 
     async def get_attendance(self) -> list[Attendance]:
         """Получает данные о посещаемости
@@ -37,21 +38,20 @@ class AttendanceService:
         Returns:
             Список предметов с информацией о посещаемости.
         """
-        body = {
-            "processor": "getArray_ArrayDicsiplinesStudentAttendance",
-            "referrer": "/student/attendance",
-            "НомерСтраницы": 0
-        }
-        response = await self.client.post(
+        body = ProcessorRequestFactory().create(
+            processor="getArray_ArrayDicsiplinesStudentAttendance"
+        )
+        response = await self.client.request(
+            method=Method.POST,
             url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
-            json=body
+            body=body
         )
 
         data = response.json()
 
         try:
-            subjects = self.attendance_list_parser.parse(data)
-            
+            subjects = AttendanceListParser().parse(data)
+
             for subject in subjects:
                 if subject.subject_name and subject.uid:
                     skips = await self.get_subject_skips(
@@ -80,13 +80,11 @@ class AttendanceService:
         Returns:
             Количество пропусков.
         """
-        body = {
-            "processor": "getArray_ArrayDicsiplinesStudentAttendance",
-            "referrer": "/student/attendance",
-            "НомерСтраницы": 0
-        }
+        body = ProcessorRequestFactory().create(
+            processor="getArray_ArrayDicsiplinesStudentAttendance"
+        )
 
-        params = self.params_parser.parse(attendance_list)
+        params = SubjectParamsParser().parse(attendance_list)
         params["Дисциплина"] = {
             "type": "CatalogRef",
             "catalog": "Дисциплины",
@@ -101,31 +99,13 @@ class AttendanceService:
             **params
         }
 
-        response = await self.client.post(
+        response = await self.client.request(
+            method=Method.POST,
             url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
-            json=body
+            body=body
         )
 
         data = response.json()
-        skips = self.skips_parser.parse(data)
+        skips = SkipsParser().parse(data)
 
         return skips
-
-
-    def _get_params(self, raw_data: dict[str, Any]) -> dict[str, Any]:
-        response = raw_data.get(
-            "data", {}
-        ).get("Ответ", [])
-
-        if not response:
-            raise GetAttendanceError("Invalid Response: Ответ wasn't found")
-
-        params_structure = response[0].get(
-            "СтруктураПараметров", {}
-        )
-        if not (command := params_structure.get("command", [])):
-            raise GetAttendanceError("Invalid Response: command wasn't found")
-
-        command_params = command[0].get("ПараметрыКоманды", {})
-
-        return command_params

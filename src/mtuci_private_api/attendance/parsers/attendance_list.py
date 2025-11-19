@@ -19,7 +19,7 @@ class AttendanceListParser(
 
         if obj.get("state") != "ok":
             return False
-        
+
         data = obj.get("data", {})
 
         if not data.get("Ответ", []):

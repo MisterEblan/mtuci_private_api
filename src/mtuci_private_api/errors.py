@@ -15,3 +15,7 @@ class GetAttendanceError(Exception):
 class ParseError(Exception):
     """Ошибка парсинга"""
     pass
+
+class HttpClientError(Exception):
+    """Ошибка запроса HTTP-клиента"""
+    pass

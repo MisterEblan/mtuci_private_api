@@ -54,4 +54,4 @@ class SubjectParamsParser(
         command = params_structure.get("command", [])
         command_params = command[0].get("ПараметрыКоманды", {})
 
-        return command_params
+        return command_params # type:ignore

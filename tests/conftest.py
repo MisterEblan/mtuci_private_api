@@ -1,4 +1,5 @@
 import pytest
+import json
 from mtuci_private_api.attendance.parsers.attendance_list import AttendanceListParser
 from mtuci_private_api.attendance.parsers.skips import SkipsParser
 from mtuci_private_api.attendance.parsers.subject_params import SubjectParamsParser
@@ -9,6 +10,7 @@ from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
 from httpx import AsyncClient
 from os import getenv
+from typing import Any
 
 @pytest.fixture
 def mtuci_login() -> str:
@@ -65,9 +67,9 @@ async def attendance_service(
 ) -> AttendanceService:
     return AttendanceService(
         client=auth_client,
-        attendance_list_parser=AttendanceListParser(),
-        skips_parser=SkipsParser(),
-        params_parser=SubjectParamsParser()
+        # attendance_list_parser=AttendanceListParser(),
+        # skips_parser=SkipsParser(),
+        # params_parser=SubjectParamsParser()
     )
 
 @pytest.fixture
@@ -93,3 +95,25 @@ def user() -> User:
         course=course,
         speciality=spec
     )
+
+@pytest.fixture
+def attendance_list() -> dict[str, Any]:
+    with open(
+        "tests/fixtures/attendance_list.json",
+        "r",
+        encoding="utf-8"
+    ) as f:
+        content = json.load(f)
+
+    return content
+
+@pytest.fixture
+def skips_list() -> dict[str, Any]:
+    with open(
+        "tests/fixtures/skips_list.json",
+        "r",
+        encoding="utf-8"
+    ) as f:
+        content = json.load(f)
+
+    return content

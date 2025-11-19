@@ -8,31 +8,8 @@ from src.mtuci_private_api.attendance.parsers import (
     SubjectParamsParser
 )
 import pytest
-import json
 
 class TestAttendanceParsers:
-
-    @pytest.fixture
-    def attendance_list(self) -> dict[str, Any]:
-        with open(
-            "tests/fixtures/attendance_list.json",
-            "r",
-            encoding="utf-8"
-        ) as f:
-            content = json.load(f)
-
-        return content
-    
-    @pytest.fixture
-    def skips_list(self) -> dict[str, Any]:
-        with open(
-            "tests/fixtures/skips_list.json",
-            "r",
-            encoding="utf-8"
-        ) as f:
-            content = json.load(f)
-
-        return content
 
     @pytest.fixture
     def attendance_list_parser(
