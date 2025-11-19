@@ -2,9 +2,9 @@ import pytest
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
-from src.mtuci_private_api.auth import AuthService
+from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
-from httpx import AsyncClient, Cookies
+from httpx import AsyncClient
 from os import getenv
 
 @pytest.fixture
@@ -41,8 +41,8 @@ def auth_service(
     mtuci_login: str,
     mtuci_password: str,
     client: AsyncClient
-) -> AuthService:
-    return AuthService(
+) -> AutoAuthService:
+    return AutoAuthService(
         login=mtuci_login,
         password=mtuci_password,
         client=client
@@ -50,7 +50,7 @@ def auth_service(
 
 @pytest.fixture
 async def auth_client(
-    auth_service: AuthService
+    auth_service: AutoAuthService
 ) -> AsyncClient:
     await auth_service.auth()
 

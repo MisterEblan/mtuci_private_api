@@ -1,4 +1,4 @@
-"""Сервис аутентфикации"""
+"""Вторая версия сервиса аутентфикации"""
 
 from typing import Any
 from httpx import AsyncClient, Response
@@ -12,7 +12,7 @@ import urllib.parse
 import asyncio
 
 # WARN: Сгенерировано AI.
-class AuthService:
+class AuthServiceV2:
     """Сервис аутентификации
 
     Attributes:

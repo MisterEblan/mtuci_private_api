@@ -1,0 +1,80 @@
+"""Сервис автоматического выбора версии аутентификации"""
+
+from enum import Enum
+from httpx import AsyncClient, Response
+
+from .service_v1 import AuthServiceV1
+from .service_v2 import AuthServiceV2
+from ..errors import AuthError
+
+class DetectedAuth(str, Enum):
+    """Перечисление возможных версий аутентификации"""
+    V1 = "v1"
+    V2 = "v2"
+
+class AutoAuthService:
+
+    def __init__(
+        self,
+        login: str,
+        password: str,
+        client: AsyncClient
+    ):
+        self.login = login
+        self.password = password
+        self.client   = client
+        self._detected: DetectedAuth | None = None
+
+
+    async def auth(self) -> Response:
+        """Автоматическая аутентификация
+
+        Пробует сначала первую версию
+        сервиса аутентификации, затем - вторую.
+
+        Returns:
+            Ответ от сервера.
+        """
+        if self._detected == DetectedAuth.V1:
+            try:
+                return await AuthServiceV1(
+                    login=self.login,
+                    password=self.password,
+                    client=self.client
+                ).auth()
+            except AuthError as err:
+                print("Error with auth V1:", err)
+                self._detected = None
+
+        if self._detected == DetectedAuth.V2:
+            try:
+                return await AuthServiceV2(
+                    login=self.login,
+                    password=self.password,
+                    client=self.client
+                ).auth()
+            except AuthError as err:
+                print("Error with auth V1:", err)
+                self._detected = None
+
+        try:
+            response = await AuthServiceV1(
+                login=self.login,
+                password=self.password,
+                client=self.client
+            ).auth()
+
+            self._detected = DetectedAuth.V1
+            return response
+        except AuthError as err:
+            print("Error detecting V1:", err)
+
+            response = await AuthServiceV2(
+                login=self.login,
+                password=self.password,
+                client=self.client
+            ).auth()
+
+            self._detected = DetectedAuth.V2
+
+            return response

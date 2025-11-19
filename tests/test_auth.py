@@ -1,5 +1,5 @@
 from httpx import AsyncClient
-from src.mtuci_private_api.auth import AuthService
+from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.errors import AuthError
 import pytest
 
@@ -8,7 +8,7 @@ class TestAuth:
     @pytest.mark.asyncio
     async def test_auth(
         self,
-        auth_service: AuthService
+        auth_service: AutoAuthService
     ):
         response = await auth_service.auth()
 
