@@ -7,6 +7,10 @@ from .service_v1 import AuthServiceV1
 from .service_v2 import AuthServiceV2
 from ..errors import AuthError
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class DetectedAuth(str, Enum):
     """Перечисление возможных версий аутентификации"""
     V1 = "v1"
@@ -43,7 +47,7 @@ class AutoAuthService:
                     client=self.client
                 ).auth()
             except AuthError as err:
-                print("Error with auth V1:", err)
+                logger.error("Error with auth V1: %s", err)
                 self._detected = None
 
         if self._detected == DetectedAuth.V2:
@@ -54,7 +58,7 @@ class AutoAuthService:
                     client=self.client
                 ).auth()
             except AuthError as err:
-                print("Error with auth V1:", err)
+                logger.error("Error with auth V2: %s", err)
                 self._detected = None
 
         try:
@@ -67,7 +71,7 @@ class AutoAuthService:
             self._detected = DetectedAuth.V1
             return response
         except AuthError as err:
-            print("Error detecting V1:", err)
+            logger.error("Error detecting V1: %s", err)
 
             response = await AuthServiceV2(
                 login=self.login,

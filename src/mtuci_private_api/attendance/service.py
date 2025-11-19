@@ -3,7 +3,9 @@
 from typing import Any
 from httpx import AsyncClient
 
-from ..errors import GetAttendanceError
+from .parsers.base import Parser
+
+from ..errors import GetAttendanceError, ParseError
 
 from ..models import Attendance
 from ..config import app_config
@@ -17,9 +19,17 @@ class AttendanceService:
 
     def __init__(
         self,
-        client: AsyncClient
+        client: AsyncClient,
+        attendance_list_parser: Parser[
+            dict[str, Any], list[Attendance]
+        ],
+        skips_parser: Parser[dict[str, Any], int],
+        params_parser: Parser[dict[str, Any], dict[str, Any]]
     ):
         self.client = client
+        self.attendance_list_parser = attendance_list_parser
+        self.skips_parser = skips_parser
+        self.params_parser = params_parser
 
     async def get_attendance(self) -> list[Attendance]:
         """Получает данные о посещаемости
@@ -39,13 +49,27 @@ class AttendanceService:
 
         data = response.json()
 
+        try:
+            subjects = self.attendance_list_parser.parse(data)
+            
+            for subject in subjects:
+                if subject.subject_name and subject.uid:
+                    skips = await self.get_subject_skips(
+                        subject.uid,
+                        subject.subject_name,
+                        data
+                    )
+                    subject.skips = skips
 
-        return await self._parse(data)
+            return subjects
+        except ParseError as err:
+            raise GetAttendanceError("Failed to get attendance") from err
 
     async def get_subject_skips(
         self,
         subject_uid: str,
-        subject_name: str
+        subject_name: str,
+        attendance_list: dict[str, Any]
     ) -> int:
         """Получает количество пропусков по предмету
 
@@ -62,13 +86,7 @@ class AttendanceService:
             "НомерСтраницы": 0
         }
 
-        response = await self.client.post(
-            url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
-            json=body
-        )
-        data = response.json()
-
-        params = self._get_params(data)
+        params = self.params_parser.parse(attendance_list)
         params["Дисциплина"] = {
             "type": "CatalogRef",
             "catalog": "Дисциплины",
@@ -88,72 +106,11 @@ class AttendanceService:
             json=body
         )
 
-        data = response.json().get("data", {})
+        data = response.json()
+        skips = self.skips_parser.parse(data)
 
-        response_ = data.get("Ответ", {})
-        if not (table := response_.get("ТаблицаДанных", [])):
-            raise GetAttendanceError("Invalid Response: Ответ wasn't found")
+        return skips
 
-        count = 0
-        for subject in table:
-            if not subject.get("Отметка", False):
-                count += 1
-
-        return count
-
-    async def _parse(
-        self,
-        attendance_data: dict[str, Any]
-    ) -> list[Attendance]:
-        """Парсит JSON посещаемости
-
-        Args:
-            attendance_data: сырой словарь с данными о посещаемости.
-
-        Returns:
-            список предметов с посещаемостью.
-        """
-        data = attendance_data.get("data", {})
-
-        if not (data := data.get("Ответ", [])):
-            raise GetAttendanceError("Invalid Response: Ответ wasn't found")
-
-        data = data[0].get("Содержимое", {})
-
-        table = data.get("ТаблицаДанных", [])
-
-        result = []
-        for subject in table:
-            name = subject.get("ПредставлениеПары", "")
-            percent = float(
-                subject.get("ПроцентПосещений", "0,0")
-                .replace(",", ".")
-            )
-            uid = None
-            if command := subject.get("data", {}).get("command", []):
-                uid = (
-                    command[0].get("ПараметрыКоманды", {})
-                    .get("Дисциплина", {})
-                    .get("uid", None)
-                )
-
-            skips = None
-            if name and uid:
-                skips = await self.get_subject_skips(
-                    subject_uid=uid,
-                    subject_name=name
-                )
-
-            attendance = Attendance(
-                uid=uid,
-                subject_name=name,
-                attendance_percentage=percent,
-                skips=skips
-            )
-
-            result.append(attendance)
-
-        return result
 
     def _get_params(self, raw_data: dict[str, Any]) -> dict[str, Any]:
         response = raw_data.get(

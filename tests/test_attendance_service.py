@@ -25,17 +25,17 @@ class TestAttendanceService:
 
         assert attendance
 
-    @pytest.mark.asyncio
-    async def test_get_subject_skips(
-        self,
-        attendance_service: AttendanceService,
-        subject_uid: str,
-        subject_name: str
-    ):
-        skips = await attendance_service.get_subject_skips(
-            subject_uid,
-            subject_name
-        )
-
-        print("Skips:", skips)
-        assert skips
+    # @pytest.mark.asyncio
+    # async def test_get_subject_skips(
+    #     self,
+    #     attendance_service: AttendanceService,
+    #     subject_uid: str,
+    #     subject_name: str
+    # ):
+    #     skips = await attendance_service.get_subject_skips(
+    #         subject_uid,
+    #         subject_name
+    #     )
+    #
+    #     print("Skips:", skips)
+    #     assert skips

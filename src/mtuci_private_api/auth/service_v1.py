@@ -10,6 +10,9 @@ from bs4 import BeautifulSoup
 
 import urllib.parse
 import asyncio
+import logging
+
+logger = logging.getLogger(__name__)
 
 class AuthServiceV1:
     """Сервис аутентификации
@@ -134,7 +137,7 @@ class AuthServiceV1:
         raw = response_1.cookies.get("__js_p_")
 
         if not raw:
-            print(response_1.text)
+            logger.debug(response_1.text)
             raise AuthError("Cookies not received")
 
         raw_splitted = raw.split(",")

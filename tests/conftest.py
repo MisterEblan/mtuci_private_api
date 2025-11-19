@@ -1,4 +1,7 @@
 import pytest
+from mtuci_private_api.attendance.parsers.attendance_list import AttendanceListParser
+from mtuci_private_api.attendance.parsers.skips import SkipsParser
+from mtuci_private_api.attendance.parsers.subject_params import SubjectParamsParser
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
@@ -61,7 +64,10 @@ async def attendance_service(
     auth_client: AsyncClient
 ) -> AttendanceService:
     return AttendanceService(
-        client=auth_client
+        client=auth_client,
+        attendance_list_parser=AttendanceListParser(),
+        skips_parser=SkipsParser(),
+        params_parser=SubjectParamsParser()
     )
 
 @pytest.fixture

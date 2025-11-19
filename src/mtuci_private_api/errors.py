@@ -11,3 +11,7 @@ class GetUserInfoError(Exception):
 class GetAttendanceError(Exception):
     """Ошибка при получении данных о посещаемости"""
     pass
+
+class ParseError(Exception):
+    """Ошибка парсинга"""
+    pass
