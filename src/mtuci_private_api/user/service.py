@@ -33,7 +33,9 @@ class UserService:
         )
         response.raise_for_status()
 
-        return self._parse(response.json())
+        data = response.json()
+
+        return self._parse(data)
 
     def _parse(
         self,

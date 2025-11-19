@@ -39,6 +39,7 @@ class AttendanceService:
 
         data = response.json()
 
+
         return await self._parse(data)
 
     async def get_subject_skips(
