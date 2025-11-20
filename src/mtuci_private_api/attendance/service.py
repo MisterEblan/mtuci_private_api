@@ -60,7 +60,7 @@ class AttendanceService:
 
             return subjects
         except ParseError as err:
-            raise GetAttendanceError("Failed to get attendance") from err
+            raise GetAttendanceError("Error parsing response") from err
 
     async def get_subject_skips(
         self,

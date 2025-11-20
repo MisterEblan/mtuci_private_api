@@ -1,4 +1,8 @@
+from httpx import Response
+from src.mtuci_private_api.errors import GetAttendanceError
+from src.mtuci_private_api.http.base import HttpClient
 from src.mtuci_private_api.attendance import AttendanceService
+from unittest.mock import AsyncMock
 import pytest
 import json
 
@@ -24,3 +28,19 @@ class TestAttendanceService:
         )
 
         assert attendance
+
+    async def test_get_attendance_fail(
+        self,
+    ):
+        mock_response = AsyncMock(Response)
+        mock_response.json.return_value = {"state": "bad"}
+
+        mock_client = AsyncMock(HttpClient)
+        mock_client.request.return_value = mock_response
+
+        service = AttendanceService(mock_client)
+
+        with pytest.raises(
+            GetAttendanceError, match="Error parsing response"
+        ):
+            await service.get_attendance()

@@ -1,7 +1,7 @@
 """Парсер пропусков конкретного предмета"""
 
 from typing import Any
-from .base import Parser
+from ...parsers import Parser
 from ...errors import ParseError
 
 class SkipsParser(
@@ -32,9 +32,8 @@ class SkipsParser(
 
         data = obj.get("data", {})
 
-        response_ = data.get("Ответ", {})
-        if not (table := response_.get("ТаблицаДанных", [])):
-            raise ParseError("Invalid Response: Ответ wasn't found")
+        response = data.get("Ответ", {})
+        table = response.get("ТаблицаДанных", [])
 
         count = 0
         for subject in table:

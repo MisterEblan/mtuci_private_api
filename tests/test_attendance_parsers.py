@@ -39,7 +39,8 @@ class TestAttendanceParsers:
     ):
         attendance = attendance_list_parser.parse(attendance_list)
 
-        # print(attendance)
+        # import json
+        # print(json.dumps(attendance, ensure_ascii=False, indent=4))
 
         assert attendance, \
         "Ожидалось, что будет получен не пустой ответ. " + \
@@ -56,6 +57,10 @@ class TestAttendanceParsers:
         assert len(attendance) == 12, \
         "Ожидалось, что будет получено 12 элементов. " + \
             f"Получили {len(attendance)}"
+
+        assert all(
+            a.uid for a in attendance
+        ), "Ожидалось, что у всех элементов будет uid"
 
     def test_attendance_list_parser_fail(
         self,
@@ -99,6 +104,16 @@ class TestAttendanceParsers:
         params_parser: Parser[dict[str, Any], dict[str, Any]]
     ):
         del attendance_list["data"]["Ответ"]
+
+        with pytest.raises(ParseError):
+            params_parser.parse(attendance_list)
+
+    def test_params_parser_fail_validate(
+        self,
+        attendance_list: dict[str, Any],
+        params_parser: Parser[dict[str, Any], dict[str, Any]]
+    ):
+        del attendance_list["data"]["Ответ"][0]["СтруктураПараметров"]["command"]
 
         with pytest.raises(ParseError):
             params_parser.parse(attendance_list)

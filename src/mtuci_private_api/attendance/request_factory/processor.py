@@ -20,14 +20,16 @@ class ProcessorRequestFactory(RequestFactory):
             Словарь с данными.
         """
 
-        if not (processor := kwargs.pop("processor")):
-            raise ValueError("Processor param not found")
+        try:
+            processor = kwargs.pop("processor")
 
-        body = {
-            "processor": processor,
-            "referrer": "/student/attendance",
-            "НомерСтраницы": 0,
-            **kwargs
-        }
+            body = {
+                "processor": processor,
+                "referrer": "/student/attendance",
+                "НомерСтраницы": 0,
+                **kwargs
+            }
 
-        return body
+            return body
+        except KeyError as err:
+            raise ValueError("Processor param not found") from err
