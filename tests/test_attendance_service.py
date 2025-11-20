@@ -1,5 +1,4 @@
 from src.mtuci_private_api.attendance import AttendanceService
-from unittest.mock import patch, MagicMock
 import pytest
 import json
 
@@ -16,9 +15,9 @@ class TestAttendanceService:
     @pytest.mark.asyncio
     async def test_get_attendance(
         self,
-        attendance_service: AttendanceService
+        no_auth_attendance_service: AttendanceService
     ):
-        attendance = await attendance_service.get_attendance()
+        attendance = await no_auth_attendance_service.get_attendance()
 
         print(
             json.dumps(attendance, indent=2, ensure_ascii=False, default=dict)

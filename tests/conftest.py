@@ -1,5 +1,7 @@
 import pytest
 import json
+
+from mtuci_private_api.attendance.http.base import HttpClient
 from mtuci_private_api.attendance.parsers.attendance_list import AttendanceListParser
 from mtuci_private_api.attendance.parsers.skips import SkipsParser
 from mtuci_private_api.attendance.parsers.subject_params import SubjectParamsParser
@@ -8,9 +10,12 @@ from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
+
 from httpx import AsyncClient
 from os import getenv
 from typing import Any
+
+from .fixtures.attendance_http_client import fake_attendance_http_client
 
 @pytest.fixture
 def mtuci_login() -> str:
@@ -62,15 +67,18 @@ async def auth_client(
     return auth_service.client
 
 @pytest.fixture
-async def attendance_service(
-    auth_client: AsyncClient
+async def no_auth_attendance_service(
+        fake_attendance_http_client: HttpClient
 ) -> AttendanceService:
-    return AttendanceService(
-        client=auth_client,
-        # attendance_list_parser=AttendanceListParser(),
-        # skips_parser=SkipsParser(),
-        # params_parser=SubjectParamsParser()
+    client = AsyncClient()
+    service = AttendanceService(
+        client=client,
     )
+
+    service.client = fake_attendance_http_client
+
+    return service
+
 
 @pytest.fixture
 async def user_service(

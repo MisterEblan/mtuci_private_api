@@ -1,0 +1,24 @@
+repos:
+  - repo: local
+    hooks:
+      - id: pytest-cov
+        name: Run pytest + coverage
+        entry: pytest --cov=src/ --cov-branch --cov-fail-under=80 tests
+        language: system
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: Run pylint
+        entry: pylint src/
+        language: system
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: bandit
+        name: Run bandit security
+        entry: bandit -r src/
+        language: system
+        pass_filenames: false

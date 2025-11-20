@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-class RequestFactory(ABC):
+class RequestFactory(ABC): # pragma: no cover
     """Абстрактный класс для фабрики запросов"""
 
     @abstractmethod

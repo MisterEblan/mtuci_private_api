@@ -11,7 +11,7 @@ class Method(str, Enum):
     GET  = "get"
     POST = "post"
 
-class HttpClient(ABC):
+class HttpClient(ABC): # pragma: no cover
     """Абстрактный HTTP-клиент для запросов"""
 
     @abstractmethod
