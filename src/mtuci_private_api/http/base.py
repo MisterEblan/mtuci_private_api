@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from enum import Enum
 from typing import Any
 
-from httpx import AsyncClient, Response
+from httpx import URL, AsyncClient, Response
 
 class Method(str, Enum):
     """Перечисление методов для запросов"""
@@ -46,7 +46,7 @@ class BaseHttpClient(
     async def request(
         self,
         method: Method,
-        url: str,
+        url: str | URL,
         **kwargs: Any
     ) -> Response:
         """Выполняет запрос

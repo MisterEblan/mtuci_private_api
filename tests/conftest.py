@@ -1,12 +1,14 @@
 import pytest
 import json
 
-from src.mtuci_private_api.http import HttpClient, BaseHttpClient
+from src.mtuci_private_api.http import HttpClient
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
+from src.mtuci_private_api.http import HttpClient
+from src.mtuci_private_api.auth.v2.http_client import AuthHttpClient
 
 from httpx import AsyncClient
 from os import getenv
@@ -27,7 +29,7 @@ def mtuci_password() -> str:
     return password
 
 @pytest.fixture
-def client() -> AsyncClient:
+def client() -> HttpClient:
     client = AsyncClient(
         headers={
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
@@ -41,13 +43,13 @@ def client() -> AsyncClient:
         follow_redirects=True
     )
 
-    return client
+    return AuthHttpClient(client)
 
 @pytest.fixture
 def auth_service(
     mtuci_login: str,
     mtuci_password: str,
-    client: AsyncClient
+    client: AuthHttpClient
 ) -> AutoAuthService:
     return AutoAuthService(
         login=mtuci_login,
@@ -58,7 +60,7 @@ def auth_service(
 @pytest.fixture
 async def auth_client(
     auth_service: AutoAuthService
-) -> AsyncClient:
+) -> HttpClient:
     await auth_service.auth()
 
     return auth_service.client

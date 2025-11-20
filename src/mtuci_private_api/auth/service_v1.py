@@ -1,7 +1,10 @@
 """Изначальный сервис аутентфикации"""
 
 from typing import Any
-from httpx import URL, AsyncClient, Response
+from httpx import URL, Response
+
+from ..http import Method
+from .v2.http_client import AuthHttpClient
 
 from ..errors import AuthError
 from ..config import app_config
@@ -30,7 +33,7 @@ class AuthServiceV1:
         self,
         login: str,
         password: str,
-        client: AsyncClient
+        client: AuthHttpClient
     ):
         self.login = login
         self.password = password
@@ -66,7 +69,12 @@ class AuthServiceV1:
 
         login_url = URL(form["action"])
 
-        response = await self.client.post(login_url, data=data)
+        response = await self.client.request(
+            method=Method.POST,
+            url=login_url,
+            data=data,
+            body={}
+        )
 
         if not self._is_success(response):
             raise AuthError("Invalid credentials")
@@ -128,10 +136,12 @@ class AuthServiceV1:
             Ответ от сервера после первичного входа.
         """
         body = self._make_body()
-        response_1 = await self.client.post(
+        response_1 = await self.client.request(
+            method=Method.POST,
             url=app_config.mtuci_url + \
                 "/bvzauth/realms/master/login-actions/authenticate",
-            data=body
+            data=body,
+            body={}
         )
 
         raw = response_1.cookies.get("__js_p_")
@@ -158,6 +168,9 @@ class AuthServiceV1:
 
         await asyncio.sleep(self.WAIT)
 
-        response_2 = await self.client.get(app_config.mtuci_url)
+        response_2 = await self.client.request(
+            method=Method.GET,
+            url=app_config.mtuci_url
+        )
 
         return response_2

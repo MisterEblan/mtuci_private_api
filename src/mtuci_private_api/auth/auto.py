@@ -4,8 +4,18 @@ from enum import Enum
 from httpx import AsyncClient, Response
 
 from .service_v1 import AuthServiceV1
-from .service_v2 import AuthServiceV2
+
+from .v2 import AuthServiceV2
+from .v2.parsers import (
+    ErrorMessageParser,
+    LoginFormParser,
+    LoginUrlParser
+)
+from .v2.request_factory import LoginRequestFactory
+from .v2.http_client import AuthHttpClient
+
 from ..errors import AuthError
+
 
 import logging
 
@@ -18,11 +28,17 @@ class DetectedAuth(str, Enum):
 
 class AutoAuthService:
 
+    parsers = {
+        "error_parser": ErrorMessageParser(),
+        "login_url_parser": LoginUrlParser(),
+        "login_form_parser": LoginFormParser(),
+    }
+
     def __init__(
         self,
         login: str,
         password: str,
-        client: AsyncClient
+        client: AuthHttpClient
     ):
         self.login = login
         self.password = password
@@ -55,7 +71,9 @@ class AutoAuthService:
                 return await AuthServiceV2(
                     login=self.login,
                     password=self.password,
-                    client=self.client
+                    client=self.client,
+                    **self.parsers,
+                    request_factory=LoginRequestFactory()
                 ).auth()
             except AuthError as err:
                 logger.error("Error with auth V2: %s", err)
@@ -76,7 +94,9 @@ class AutoAuthService:
             response = await AuthServiceV2(
                 login=self.login,
                 password=self.password,
-                client=self.client
+                client=self.client,
+                **self.parsers,
+                request_factory=LoginRequestFactory()
             ).auth()
 
             self._detected = DetectedAuth.V2
