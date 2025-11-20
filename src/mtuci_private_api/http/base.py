@@ -40,7 +40,7 @@ class BaseHttpClient(
     def __init__(
         self,
         session: AsyncClient
-    ):
+    ): # pragma: no cover
         self.session = session
 
     async def request(
