@@ -1,7 +1,7 @@
 """Парсер пропусков конкретного предмета"""
 
 from typing import Any
-from .base import Parser
+from ...parsers import Parser
 from ...errors import ParseError
 
 class SkipsParser(

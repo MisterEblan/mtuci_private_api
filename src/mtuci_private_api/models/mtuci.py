@@ -26,6 +26,7 @@ class User(BaseModel):
         speciality: специальность.
     """
     uid:        str | None
+    name:       str
     department: str
     group:      str
     course:     str

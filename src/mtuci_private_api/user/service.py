@@ -27,7 +27,10 @@ class UserService:
             url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
             json=body
         )
-        response.raise_for_status()
+
+        if not response.is_success:
+            text = response.text
+            raise GetUserInfoError(f"Request wasn't successful: {text}")
 
         data = response.json()
 

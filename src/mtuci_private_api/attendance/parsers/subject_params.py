@@ -1,7 +1,7 @@
 """Парсер для получения параметров запроса"""
 
 from typing import Any
-from .base import Parser
+from ...parsers import Parser
 from ...errors import ParseError
 
 class SubjectParamsParser(

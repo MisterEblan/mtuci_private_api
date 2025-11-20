@@ -58,11 +58,15 @@ class UserInfoParser(
         )
         response = data.get("Ответ", {})
         block_array = response.get("МассивБлоков", [])
-        uid = obj.get(
-            "inputParams", {}
-        ).get(
-            "ФизическоеЛицо", {}
-        ).get("uid", "")
+        input_params = obj.get("inputParams", {})
+
+        if not (personal := input_params.get("ФизическоеЛицо")):
+            raise ParseError("ФизическоеЛицо not found")
+
+        uid = personal.get("uid", "")
+        
+        if not (name := personal.get("name", "")):
+            raise ParseError("User name not found")
 
         values = block_array[0].get("ПереченьЗначений", {})
 
@@ -73,6 +77,7 @@ class UserInfoParser(
 
         return User(
             uid=uid,
+            name=name,
             department=department,
             group=group,
             course=course,
