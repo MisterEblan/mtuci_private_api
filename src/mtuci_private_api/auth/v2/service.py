@@ -3,8 +3,12 @@
 from typing import Any
 from httpx import AsyncClient, Response
 
-from ..errors import AuthError
-from ..config import app_config
+from ...http import Method
+
+from ...errors import AuthError
+from ...config import app_config
+
+from .http_client import AuthHttpClient
 
 from bs4 import BeautifulSoup
 
@@ -23,19 +27,19 @@ class AuthServiceV2:
         WAIT: время в секундах,
             которое нужно подождать перед отправкой следующего запроса.
     """
+    FAIL_MESSAGE = "invalid username or password"
+    WAIT = 1
 
     def __init__(
         self,
         login: str,
         password: str,
-        client: AsyncClient
+        client: AuthHttpClient
     ):
         self.login = login
         self.password = password
         self.client = client
 
-        self.FAIL_MESSAGE = "invalid username or password"
-        self.WAIT = 1
 
     async def auth(self) -> Response:
         """Аутентифицирует в ЛК
@@ -67,7 +71,12 @@ class AuthServiceV2:
             })
 
             body = self._make_body(hidden_fields)
-            resp = await self.client.post(action_url, data=body, follow_redirects=False)
+            resp = await self.client.request(
+                method=Method.POST,
+                url=action_url,
+                data=body,
+                follow_redirects=False
+            )
             # If server responded with redirect -> follow manually to ensure cookies are set properly
             if resp.status_code in (301, 302, 303, 307, 308):
                 loc = resp.headers.get("Location")
@@ -77,7 +86,11 @@ class AuthServiceV2:
                 if not loc.startswith("http"):
                     loc = urllib.parse.urljoin(str(action_url), loc)
                 # follow with redirects enabled to land on final page
-                resp = await self.client.get(loc, follow_redirects=True)
+                resp = await self.client.request(
+                    method=Method.GET,
+                    url=loc,
+                    follow_redirects=True
+                )
 
             # If 200 and still on login form -> extract error message if any
             if resp.status_code == 200 and self._is_login_form_page(resp.text):
@@ -96,13 +109,21 @@ class AuthServiceV2:
             # Heuristic: check that keycloak identity/session cookies present
             if not any(k.startswith("KEYCLOAK") or k.startswith("AUTH_SESSION_ID") for k in self.client.cookies.keys()):
                 # maybe login succeeded in keycloak but app-level cookie missing; try hitting main page once
-                check = await self.client.get(app_config.mtuci_url, follow_redirects=True)
+                check = await self.client.request(
+                    method=Method.GET,
+                    url=app_config.mtuci_url,
+                    follow_redirects=True
+                )
                 if not any(k.startswith("KEYCLOAK") or k.startswith("AUTH_SESSION_ID") for k in self.client.cookies.keys()):
                     raise AuthError("Login appears unsuccessful: key cookies not present after authentication")
 
             # Final: try to visit application main page to get app cookies (js anti-bot etc.)
             await asyncio.sleep(self.WAIT)
-            app_resp = await self.client.get(app_config.mtuci_url, follow_redirects=True)
+            app_resp = await self.client.request(
+                method=Method.GET,
+                url=app_config.mtuci_url,
+                follow_redirects=True
+            )
             return app_resp
 
         finally:
@@ -111,15 +132,34 @@ class AuthServiceV2:
             self.client.headers.update(headers_backup)
 
     async def _get_main(self) -> Response:
-        """GET main page without following redirects first, so we can inspect Location."""
-        resp = await self.client.get(app_config.mtuci_url, follow_redirects=False)
+        """Делает GET запрос на главную страницу,
+        чтобы получить данные о локации.
+
+        Returns:
+            Ответ на запрос.
+        """
+        resp = await self.client.request(
+            method=Method.GET,
+            url=app_config.mtuci_url,
+            follow_redirects=False
+        )
         return resp
 
-    async def _discover_login_url(self, main_resp: Response) -> str:
-        """
-        Determine the URL to fetch login form from:
-          - if main_resp is a redirect (Location header) -> use it
-          - else parse HTML to find links/forms that point to Keycloak auth
+    async def _discover_login_url(
+            self,
+            main_resp: Response
+    ) -> str:
+        """Определяет URL для входа в аккаунт
+
+        Если в ответ на запрос главной страницы пришёл редирект,
+        то используем Location заголовок.
+        Если пришёл HTML - парсим и ищем ссылки/формы для Keycloak auth.
+
+        Args:
+            main_response: ответ на запрос главной страницы.
+
+        Returns:
+            URL для входа.            
         """
         # 1) redirect from server (common)
         if main_resp.status_code in (301, 302, 303, 307, 308):
@@ -161,7 +201,11 @@ class AuthServiceV2:
 
     async def _fetch_login_form(self, login_url: str) -> tuple[str, dict[str, str], str]:
         """GET the login page and extract form.action and hidden fields. Returns (action_url, hidden_fields, page_url)."""
-        resp = await self.client.get(login_url, follow_redirects=True)
+        resp = await self.client.request(
+            method=Method.GET,
+            url=login_url,
+            follow_redirects=True
+        )
         if resp.status_code != 200:
             raise AuthError(f"Failed to fetch login page: {resp.status_code}")
 
@@ -201,6 +245,15 @@ class AuthServiceV2:
 
     def _make_body(self, hidden_fields: dict[str, str]) -> dict[str, Any]:
         """Create POST body merging hidden fields and credentials."""
+
+        """Создаёт тело POST запроса, сливая в него и креды и скрытые поля
+
+        Args:
+            hidden_fields: найденные скрытые поля.
+
+        Returns:
+            Тело запроса.
+        """
         body = dict(hidden_fields)  # copy
         # overwrite or set required fields
         body.update({
@@ -215,4 +268,12 @@ class AuthServiceV2:
 
     @staticmethod
     def _is_login_form_page(text: str) -> bool:
+        """Определяет, есть ли на странице форма для ввода данных
+
+        Args:
+            text: HTML-страница.
+
+        Returns:
+            Является ли страницей для входа.
+        """
         return "kc-form-login" in (text or "") or "name=\"username\"" in (text or "")
