@@ -1,7 +1,7 @@
 import pytest
 import json
 
-from src.mtuci_private_api.http import HttpClient
+from src.mtuci_private_api.http import HttpClient, BaseHttpClient
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
@@ -67,12 +67,9 @@ async def auth_client(
 async def no_auth_attendance_service(
         fake_attendance_http_client: HttpClient
 ) -> AttendanceService:
-    client = AsyncClient()
     service = AttendanceService(
-        client=client,
+        client=fake_attendance_http_client,
     )
-
-    service.client = fake_attendance_http_client
 
     return service
 

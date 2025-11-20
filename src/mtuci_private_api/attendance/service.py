@@ -1,9 +1,8 @@
 """Сервис посещаемости"""
 
 from typing import Any
-from httpx import AsyncClient
 
-from ..http import BaseHttpClient, HttpClient, Method
+from ..http import HttpClient, Method
 from .request_factory import ProcessorRequestFactory
 
 from .parsers import (
@@ -26,11 +25,9 @@ class AttendanceService:
 
     def __init__(
         self,
-        client: AsyncClient,
+        client: HttpClient,
     ):
-        self.client: HttpClient = BaseHttpClient(
-            session=client
-        )
+        self.client = client
 
     async def get_attendance(self) -> list[Attendance]:
         """Получает данные о посещаемости
