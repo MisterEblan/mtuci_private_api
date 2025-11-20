@@ -4,7 +4,7 @@ from typing import Any
 
 from ...errors import ParseError
 from ...models.mtuci import Attendance
-from .base import Parser
+from ...parsers import Parser
 
 class AttendanceListParser(
     Parser[dict[str, Any], list[Attendance]]

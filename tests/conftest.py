@@ -1,10 +1,7 @@
 import pytest
 import json
 
-from mtuci_private_api.attendance.http.base import HttpClient
-from mtuci_private_api.attendance.parsers.attendance_list import AttendanceListParser
-from mtuci_private_api.attendance.parsers.skips import SkipsParser
-from mtuci_private_api.attendance.parsers.subject_params import SubjectParamsParser
+from src.mtuci_private_api.http import HttpClient
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config

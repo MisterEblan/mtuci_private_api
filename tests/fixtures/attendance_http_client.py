@@ -2,7 +2,7 @@ from typing import Any
 from httpx import Response
 import pytest
 import json
-from src.mtuci_private_api.attendance.http import (
+from src.mtuci_private_api.http import (
     HttpClient,
     Method
 )

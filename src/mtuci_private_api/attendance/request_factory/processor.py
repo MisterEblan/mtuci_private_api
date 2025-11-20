@@ -1,7 +1,7 @@
 """Реализация фабрики запросов для эндпоинта /ilk/x/getProcessor"""
 
 from typing import Any
-from .base import RequestFactory
+from ...http.request_factory import RequestFactory
 
 class ProcessorRequestFactory(RequestFactory):
     """Фабрика запросов для эндпоинта /ilk/x/getProcessor"""

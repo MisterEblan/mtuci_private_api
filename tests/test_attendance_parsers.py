@@ -2,11 +2,11 @@ from typing import Any
 from src.mtuci_private_api.errors import ParseError
 from src.mtuci_private_api.models.mtuci import Attendance
 from src.mtuci_private_api.attendance.parsers import (
-    Parser,
     AttendanceListParser,
     SkipsParser,
     SubjectParamsParser
 )
+from src.mtuci_private_api.parsers import Parser
 import pytest
 
 class TestAttendanceParsers:

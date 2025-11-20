@@ -57,18 +57,22 @@ class BaseHttpClient(
             **kwargs: дополнительные параметры **запроса**.
                 Если запрос имеет метод POST, то в kwargs должен
                 содержаться параметр body.
+
+        Returns:
+            HTTP-ответ
         """
-        if method == Method.GET:
-            return await self.session.get(
-                url=url,
-                **kwargs
-            )
+        match method:
+            case Method.GET:
+                return await self.session.get(
+                    url=url,
+                    **kwargs
+                )
 
-        if method == Method.POST:
-            body = kwargs.pop("body")
+            case Method.POST:
+                body = kwargs.pop("body")
 
-            return await self.session.post(
-                url=url,
-                json=body,
-                **kwargs
-            )
+                return await self.session.post(
+                    url=url,
+                    json=body,
+                    **kwargs
+                )

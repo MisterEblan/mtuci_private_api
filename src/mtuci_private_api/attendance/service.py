@@ -3,8 +3,8 @@
 from typing import Any
 from httpx import AsyncClient
 
-from .http import BaseHttpClient, HttpClient, Method
-from .http.request_factory import ProcessorRequestFactory
+from ..http import BaseHttpClient, HttpClient, Method
+from .request_factory import ProcessorRequestFactory
 
 from .parsers import (
     AttendanceListParser,
