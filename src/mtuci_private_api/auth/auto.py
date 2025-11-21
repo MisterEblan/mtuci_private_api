@@ -1,7 +1,7 @@
 """Сервис автоматического выбора версии аутентификации"""
 
 from enum import Enum
-from httpx import AsyncClient, Response
+from httpx import Response
 
 from .service_v1 import AuthServiceV1
 
@@ -12,9 +12,10 @@ from .v2.parsers import (
     LoginUrlParser
 )
 from .v2.request_factory import LoginRequestFactory
-from .v2.http_client import AuthHttpClient
 
 from ..errors import AuthError
+
+from ..http import BaseHttpClient
 
 
 import logging
@@ -38,7 +39,7 @@ class AutoAuthService:
         self,
         login: str,
         password: str,
-        client: AuthHttpClient
+        client: BaseHttpClient
     ):
         self.login = login
         self.password = password

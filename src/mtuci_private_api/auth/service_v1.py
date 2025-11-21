@@ -3,8 +3,7 @@
 from typing import Any
 from httpx import URL, Response
 
-from ..http import Method
-from .v2.http_client import AuthHttpClient
+from ..http import Method, BaseHttpClient
 
 from ..errors import AuthError
 from ..config import app_config
@@ -33,7 +32,7 @@ class AuthServiceV1:
         self,
         login: str,
         password: str,
-        client: AuthHttpClient
+        client: BaseHttpClient
     ):
         self.login = login
         self.password = password

@@ -1,9 +1,8 @@
 """Вторая версия сервиса аутентфикации"""
 
-from typing import Any
-from httpx import AsyncClient, Response
+from httpx import Response
 
-from ...http import Method
+from ...http import Method, BaseHttpClient
 
 from ...errors import AuthError
 from ...config import app_config
@@ -13,8 +12,6 @@ from .parsers import (
     LoginFormParser
 )
 from .request_factory import LoginRequestFactory
-
-from .http_client import AuthHttpClient
 
 import urllib.parse
 import asyncio
@@ -42,7 +39,7 @@ class AuthServiceV2:
         self,
         login: str,
         password: str,
-        client:       AuthHttpClient,
+        client:       BaseHttpClient,
         login_url_parser:  LoginUrlParser,
         login_form_parser: LoginFormParser,
         error_parser:      ErrorMessageParser,
@@ -71,6 +68,7 @@ class AuthServiceV2:
             app_config.mtuci_url,
             follow_redirects=False
         )
+
         await asyncio.sleep(self.WAIT)
 
         # 2. Определяем URL страницы входа
@@ -109,7 +107,6 @@ class AuthServiceV2:
                 follow_redirects=False,
                 body={}
             )
-
             # Обрабатываем redirect
             if resp.status_code in (301, 302, 303, 307, 308):
                 resp = await self._follow_redirect(resp)
@@ -153,11 +150,13 @@ class AuthServiceV2:
         if not loc.startswith("http"):
             loc = urllib.parse.urljoin(str(resp.url), loc)
 
-        return await self.client.request(
+        loc_resp = await self.client.request(
             Method.GET,
             loc,
             follow_redirects=True
         )
+
+        return loc_resp
 
     async def _check_auth_errors(self, resp: Response) -> None:
         """Проверяет ответ на наличие ошибок аутентификации

@@ -7,8 +7,7 @@ from src.mtuci_private_api.user.service import UserService
 from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
-from src.mtuci_private_api.http import HttpClient
-from src.mtuci_private_api.auth.v2.http_client import AuthHttpClient
+from src.mtuci_private_api.http import HttpClient, BaseHttpClient
 
 from httpx import AsyncClient
 from os import getenv
@@ -43,13 +42,13 @@ def client() -> HttpClient:
         follow_redirects=True
     )
 
-    return AuthHttpClient(client)
+    return BaseHttpClient(client)
 
 @pytest.fixture
 def auth_service(
     mtuci_login: str,
     mtuci_password: str,
-    client: AuthHttpClient
+    client: BaseHttpClient
 ) -> AutoAuthService:
     return AutoAuthService(
         login=mtuci_login,

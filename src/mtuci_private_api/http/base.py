@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from enum import Enum
 from typing import Any
 
-from httpx import URL, AsyncClient, Response
+from httpx import URL, AsyncClient, Cookies, Headers, Response
 
 class Method(str, Enum):
     """Перечисление методов для запросов"""
@@ -76,3 +76,24 @@ class BaseHttpClient(
                     json=body,
                     **kwargs
                 )
+    @property
+    def headers(self) -> Headers:
+        return self.session.headers
+
+    @property
+    def cookies(self) -> Cookies:
+        """Доступ к cookies клиента"""
+        return self.session.cookies
+
+    def backup_headers(self) -> dict[str, str]:
+        """Сохраняет текущие заголовки"""
+        return dict(self.session.headers)
+
+    def restore_headers(self, backup: dict[str, str]) -> None:
+        """Восстанавливает заголовки из backup"""
+        self.session.headers.clear()
+        self.session.headers.update(backup)
+
+    def update_headers(self, headers: dict[str, str]) -> None:
+        """Обновляет заголовки клиента"""
+        self.session.headers.update(headers)
