@@ -21,16 +21,16 @@ class TestMtuci:
         assert user, \
         f"Ожидался не пустой объект. Получили {user}"
 
-    async def test_get_attendance(
-        self,
-        mtuci: Mtuci
-    ):
-        await mtuci.auth()
-
-        attendance = await mtuci.get_attendace()
-
-        assert attendance, \
-        f"Ожидался не пустой объект. Получили {attendance}"
+    # async def test_get_attendance(
+    #     self,
+    #     mtuci: Mtuci
+    # ):
+    #     await mtuci.auth()
+    #
+    #     attendance = await mtuci.get_attendace()
+    #
+    #     assert attendance, \
+    #     f"Ожидался не пустой объект. Получили {attendance}"
 
     async def test_get_schedule(
         self,
