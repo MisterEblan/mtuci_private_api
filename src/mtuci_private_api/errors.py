@@ -12,6 +12,10 @@ class GetAttendanceError(Exception):
     """Ошибка при получении данных о посещаемости"""
     pass
 
+class GetScheduleError(Exception):
+    """Ошибка при получении данных о расписании"""
+    pass
+
 class ParseError(Exception):
     """Ошибка парсинга"""
     pass
