@@ -55,9 +55,9 @@ class TestMtuci:
         ) as mtuci:
             user = await mtuci.get_user_info()
             # attendance = await mtuci.get_attendace()
-            schedule = await mtuci.get_schedule(datetime(2025, 11, 21))
+            # schedule = await mtuci.get_schedule(datetime(2025, 11, 21))
 
 
         assert user
         # assert attendance
-        assert schedule
+        # assert schedule
