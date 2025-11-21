@@ -23,7 +23,7 @@ class AutoAuthService:
         login: str,
         password: str,
         client: AsyncClient
-    ):
+    ): # pragma: no cover
         self.login = login
         self.password = password
         self.client   = client

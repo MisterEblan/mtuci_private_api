@@ -13,6 +13,7 @@ from os import getenv
 from typing import Any
 
 from .fixtures.attendance_http_client import fake_attendance_http_client
+from .fixtures.user_http_client import fake_user_http_client
 
 @pytest.fixture
 def mtuci_login() -> str:
@@ -58,10 +59,10 @@ def auth_service(
 @pytest.fixture
 async def auth_client(
     auth_service: AutoAuthService
-) -> AsyncClient:
+) -> HttpClient:
     await auth_service.auth()
 
-    return auth_service.client
+    return BaseHttpClient(auth_service.client)
 
 @pytest.fixture
 async def no_auth_attendance_service(
@@ -76,26 +77,10 @@ async def no_auth_attendance_service(
 
 @pytest.fixture
 async def user_service(
-        auth_client: AsyncClient
+    fake_user_http_client: HttpClient
 ) -> UserService:
     return UserService(
-        client=auth_client
-    )
-
-@pytest.fixture
-def user() -> User:
-    uid = getenv("USER_UID", "")
-    dep = getenv("USER_DEP", "")
-    group = getenv("USER_GROUP", "")
-    course = getenv("USER_COURSE", "")
-    spec   = getenv("USER_SPEC", "")
-
-    return User(
-        uid=uid,
-        department=dep,
-        group=group,
-        course=course,
-        speciality=spec
+        client=fake_user_http_client
     )
 
 @pytest.fixture
@@ -113,6 +98,17 @@ def attendance_list() -> dict[str, Any]:
 def skips_list() -> dict[str, Any]:
     with open(
         "tests/fixtures/skips_list.json",
+        "r",
+        encoding="utf-8"
+    ) as f:
+        content = json.load(f)
+
+    return content
+
+@pytest.fixture
+def user_info() -> dict[str, Any]:
+    with open(
+        "tests/fixtures/user_info.json",
         "r",
         encoding="utf-8"
     ) as f:

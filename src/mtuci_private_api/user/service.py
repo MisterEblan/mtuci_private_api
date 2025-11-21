@@ -1,11 +1,11 @@
 """Сервис получения информации о пользователе"""
 
-from typing import Any
-from httpx import AsyncClient
-
-from ..errors import GetUserInfoError
+from ..errors import GetUserInfoError, ParseError
 from ..models.mtuci import User
+from ..http import HttpClient, Method
 from ..config import app_config
+from .parsers import UserInfoParser
+from .request_factory import UserInfoRequestFactory
 
 class UserService:
     """Сервис для получения информации о пользователе
@@ -16,57 +16,27 @@ class UserService:
 
     def __init__(
         self,
-        client: AsyncClient
-    ):
+        client: HttpClient
+    ): # pragma: no cover
         self.client = client
 
     async def get_user_info(self) -> User:
-        body = {
-            "processor": "iEmployee_card",
-            "referrer": "/student/profile/student_card",
-            "role": "student",
-            "НомерСтраницы": 0
-        }
-        response = await self.client.post(
+        body = UserInfoRequestFactory().create()
+        response = await self.client.request(
+            method=Method.POST,
             url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
             json=body
         )
-        response.raise_for_status()
+
+        if not response.is_success:
+            text = response.text
+            raise GetUserInfoError(f"Request wasn't successful: {text}")
 
         data = response.json()
 
-        return self._parse(data)
+        try:
+            user = UserInfoParser().parse(data)
 
-    def _parse(
-        self,
-        raw_user_info: dict[str, Any]
-    ) -> User:
-        data = raw_user_info.get(
-            "data", {}
-        )
-        response = data.get("Ответ", {})
-        block_array = response.get("МассивБлоков", [])
-
-        if not data or not block_array or not response:
-            raise GetUserInfoError("Не найден ответ от сервера")
-
-        uid = raw_user_info.get(
-            "inputParams", {}
-        ).get(
-            "ФизическоеЛицо", {}
-        ).get("uid", "")
-
-        values = block_array[0].get("ПереченьЗначений", {})
-
-        department = values.get("Факультет",     {}).get("name", "")
-        group      = values.get("Группа",        {}).get("name", "")
-        course     = values.get("Курс",          {}).get("name", "")
-        speciality = values.get("Специальность", {}).get("name", "")
-
-        return User(
-            uid=uid,
-            department=department,
-            group=group,
-            course=course,
-            speciality=speciality
-        )
+            return user
+        except ParseError as err:
+            raise GetUserInfoError("Error parsing response") from err
