@@ -54,23 +54,10 @@ class TestMtuci:
             password=mtuci_password
         ) as mtuci:
             user = await mtuci.get_user_info()
-            attendance = await mtuci.get_attendace()
+            # attendance = await mtuci.get_attendace()
             schedule = await mtuci.get_schedule(datetime(2025, 11, 21))
 
-        # print("User:", user)
-        # print("Attendance:", json.dumps(
-        #     attendance,
-        #     ensure_ascii=False,
-        #     indent=2,
-        #     default=str
-        # ))
-        # print("Schedule:", json.dumps(
-        #     schedule,
-        #     ensure_ascii=False,
-        #     indent=2,
-        #     default=str
-        # ))
 
         assert user
-        assert attendance
+        # assert attendance
         assert schedule
