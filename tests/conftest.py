@@ -8,13 +8,14 @@ from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
 from src.mtuci_private_api.http import HttpClient, BaseHttpClient
+from src.mtuci_private_api.schedule import ScheduleService
 
 from httpx import AsyncClient
-from os import getenv
 from typing import Any
 
 from .fixtures.attendance_http_client import fake_attendance_http_client
 from .fixtures.user_http_client import fake_user_http_client
+from .fixtures.schedule_http_client import fake_schedule_client
 
 @pytest.fixture
 def mtuci_login() -> str:
@@ -63,7 +64,7 @@ async def auth_client(
 ) -> HttpClient:
     await auth_service.auth()
 
-    return BaseHttpClient(auth_service.client)
+    return BaseHttpClient(auth_service.client.session)
 
 @pytest.fixture
 async def no_auth_attendance_service(
@@ -74,6 +75,22 @@ async def no_auth_attendance_service(
     )
 
     return service
+
+@pytest.fixture
+async def schedule_service(
+    fake_schedule_client: HttpClient
+) -> ScheduleService:
+    return ScheduleService(
+        client=fake_schedule_client,
+        user_info=User(
+            uid="",
+            name="Unknown",
+            group="БИК2404",
+            speciality="",
+            course="Второй",
+            department="РиТ"
+        )
+    )
 
 
 @pytest.fixture
@@ -110,6 +127,17 @@ def skips_list() -> dict[str, Any]:
 def user_info() -> dict[str, Any]:
     with open(
         "tests/fixtures/user_info.json",
+        "r",
+        encoding="utf-8"
+    ) as f:
+        content = json.load(f)
+
+    return content
+
+@pytest.fixture
+def timetable() -> dict[str, Any]:
+    with open(
+        "tests/fixtures/timetable.json",
         "r",
         encoding="utf-8"
     ) as f:

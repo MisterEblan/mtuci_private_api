@@ -1,8 +1,17 @@
 """Модуль с моделями данных"""
 
-from .mtuci import Attendance, User
+from .mtuci import (
+        Attendance,
+        User,
+        Lesson,
+        LessonType,
+        Schedule
+)
 
 __all__ = [
     "Attendance",
-    "User"
+    "User",
+    "Lesson",
+    "LessonType",
+    "Schedule"
 ]

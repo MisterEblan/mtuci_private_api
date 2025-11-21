@@ -1,0 +1,1982 @@
+{
+    "status": "success",
+    "data": {
+        "days": {
+            "01.11.2025": [],
+            "03.11.2025": [
+                {
+                    "ID": "93373642",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы права",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Надежда Владимировна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-458"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "1",
+                    "UF_DATE": "2025-11-02T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373643",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Дмитрий Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-221"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-02T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "04.11.2025": [],
+            "05.11.2025": [
+                {
+                    "ID": "93373644",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Алексей Викторович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-126"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373645",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Иностранный язык",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Ирина Леонидовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-305"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373646",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Ирина Александровна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-219"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373647",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Гражданское социально-ответственное поведение",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Надежда Владимировна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-436"
+                    ],
+                    "UF_TYPE": "Зачет",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "06.11.2025": [
+                {
+                    "ID": "93373648",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы работы с измерительной техникой",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Алексей Эдуардович",
+                        "Антон Олегович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-Л-509"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-05T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373650",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Информационная экология",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Жанна Сергеевна",
+                        "Виктория Вячеславовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-113"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-05T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373652",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Основы экономической культуры и финансовая грамотность",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Марина Дмитриевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-308"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-05T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "07.11.2025": [
+                {
+                    "ID": "93373653",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-06T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373654",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Артемий Геннадьевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-502"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-06T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373655",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Муатаз"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-344"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-06T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373656",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Зачет",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-06T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "08.11.2025": [],
+            "10.11.2025": [
+                {
+                    "ID": "93373657",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Евгения Дмитриевна",
+                        "Максим Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-358"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-09T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373659",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Евгения Дмитриевна",
+                        "Максим Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-358"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-09T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "11.11.2025": [
+                {
+                    "ID": "93373661",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Александр Рафаилович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-310"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-10T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373662",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-10T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373663",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Экономика",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Елена Дмитриевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-524"
+                    ],
+                    "UF_TYPE": "Экзамен",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-10T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                },
+                {
+                    "ID": "93373664",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Теоретические основы электротехники",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Елена Александровна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-301"
+                    ],
+                    "UF_TYPE": "Экзамен",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-10T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "12.11.2025": [
+                {
+                    "ID": "93373665",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Алексей Викторович",
+                        "Алексей Станиславович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-124"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-11T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373667",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Основы права",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Надежда Владимировна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-347"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-11T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373668",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-11T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373669",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Иностранный язык",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Ирина Леонидовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-322"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-11T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "13.11.2025": [
+                {
+                    "ID": "93373670",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы экономической культуры и финансовая грамотность",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Марина Дмитриевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-П-207"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-12T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373671",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Татьяна Павловна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-П-207"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-12T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373672",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Информационная экология",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Жанна Сергеевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-414"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-12T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373673",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Основы работы с измерительной техникой",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Алексей Эдуардович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-Л-509"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-12T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373674",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Введение в информационные технологии",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Власюк Игорь Викторович",
+                        "Егоров Дмитрий Аркадьевич",
+                        "Поташников Алексей Михайлович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-УЛК-1007"
+                    ],
+                    "UF_TYPE": "Экзамен",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-12T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "14.11.2025": [
+                {
+                    "ID": "93373677",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Анжела Дмитриевна",
+                        "Семен Андреевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-536б",
+                        "Н-529"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-13T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373679",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Артемий Геннадьевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-503"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-13T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373680",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Муатаз"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-224"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-13T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373681",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Анжела Дмитриевна",
+                        "Семен Андреевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-536б",
+                        "Н-529"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-13T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "15.11.2025": [],
+            "17.11.2025": [
+                {
+                    "ID": "93373683",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы права",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Надежда Владимировна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-458"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-16T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373684",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Дмитрий Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-221"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-16T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373685",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Муатаз",
+                        "Гетманская Ирина Васильевна",
+                        "Гандилян Ваган Вардович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-301"
+                    ],
+                    "UF_TYPE": "Зачет",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-16T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "18.11.2025": [
+                {
+                    "ID": "93373688",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Дмитрий Борисович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-218"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-17T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373689",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Александр Рафаилович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-218"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-17T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373690",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Дмитрий Борисович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-458"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-17T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373691",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Иностранный язык",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Введенская Вера Геннадиевна",
+                        "Лапаев Лев Львович",
+                        "Курбанов Ибрагим Алиевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-221"
+                    ],
+                    "UF_TYPE": "Зачет",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-17T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "19.11.2025": [
+                {
+                    "ID": "93373694",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Алексей Викторович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-126"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-18T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373695",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Иностранный язык",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Ирина Леонидовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-305"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-18T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373696",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Ирина Александровна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-219"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-18T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "20.11.2025": [
+                {
+                    "ID": "93373697",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы работы с измерительной техникой",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Алексей Эдуардович",
+                        "Антон Олегович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-Л-509"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-19T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373699",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Информационная экология",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Жанна Сергеевна",
+                        "Виктория Вячеславовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-113"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-19T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373701",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Основы экономической культуры и финансовая грамотность",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Марина Дмитриевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-308"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-19T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "21.11.2025": [
+                {
+                    "ID": "93373702",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-20T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373703",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Артемий Геннадьевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-502"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-20T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373704",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Муатаз"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-344"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-20T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373705",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "История России",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Мария Андреевна",
+                        "Нина Викторовна",
+                        "Елена Валентиновна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-316"
+                    ],
+                    "UF_TYPE": "Дифференцированный зачет",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-20T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "22.11.2025": [],
+            "24.11.2025": [
+                {
+                    "ID": "93373708",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Евгения Дмитриевна",
+                        "Максим Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-358"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-23T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373710",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Евгения Дмитриевна",
+                        "Максим Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-358"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-23T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373712",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "0",
+                    "UF_DISCIPLINE": "Физика",
+                    "UF_TIME_START": "19:00",
+                    "UF_TIME_END": "20:30",
+                    "UF_TEACHER": [
+                        "Антон Валерьевич",
+                        "Владимир Нуруллаевич",
+                        "Владимир Фомич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-226"
+                    ],
+                    "UF_TYPE": "Экзамен",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-23T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "25.11.2025": [
+                {
+                    "ID": "93373715",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Александр Рафаилович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-310"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-24T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373716",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-24T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "26.11.2025": [
+                {
+                    "ID": "93373720",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Алексей Викторович",
+                        "Алексей Станиславович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-124"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-25T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373722",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Основы права",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Надежда Владимировна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-347"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-25T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373723",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-25T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373724",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Иностранный язык",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Ирина Леонидовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-322"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-25T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373717",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "0",
+                    "UF_DISCIPLINE": "Инженерная и компьютерная графика",
+                    "UF_TIME_START": "17:30",
+                    "UF_TIME_END": "19:00",
+                    "UF_TEACHER": [
+                        "Юрий Владимирович",
+                        "Вячеслав Борисович",
+                        "Игорь Олегович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-222"
+                    ],
+                    "UF_TYPE": "Зачет",
+                    "UF_IS_RETAKE": "1",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-25T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "1"
+                }
+            ],
+            "27.11.2025": [
+                {
+                    "ID": "93373725",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы экономической культуры и финансовая грамотность",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Марина Дмитриевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-П-207"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-26T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373726",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Татьяна Павловна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-П-207"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-26T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373727",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы работы с измерительной техникой",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Алексей Эдуардович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-Л-508"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-26T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "28.11.2025": [
+                {
+                    "ID": "93373728",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Анжела Дмитриевна",
+                        "Семен Андреевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-536б",
+                        "Н-529"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-27T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373730",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Артемий Геннадьевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-503"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-27T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373731",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Муатаз"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-344"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-27T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373732",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Анжела Дмитриевна",
+                        "Семен Андреевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-536б",
+                        "Н-529"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-27T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "29.11.2025": [],
+            "01.12.2025": [
+                {
+                    "ID": "93373734",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы права",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Надежда Владимировна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-458"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-30T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373735",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Дмитрий Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-221"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-11-30T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "02.12.2025": [
+                {
+                    "ID": "93373736",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Дмитрий Борисович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-218"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-01T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373737",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Александр Рафаилович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-218"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-01T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373738",
+                    "UF_DAY": "2",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Дмитрий Борисович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-458"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-01T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "03.12.2025": [
+                {
+                    "ID": "93373739",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Алексей Викторович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-126"
+                    ],
+                    "UF_TYPE": "Лекции",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-02T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373740",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Иностранный язык",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Ирина Леонидовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-305"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-02T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373741",
+                    "UF_DAY": "3",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы компьютерного анализа электрических цепей",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Ирина Александровна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-219"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-02T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "04.12.2025": [
+                {
+                    "ID": "93373742",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Артемий Геннадьевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-401"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-03T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373743",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Основы работы с измерительной техникой",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Алексей Эдуардович",
+                         "Антон Олегович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-Л-509"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-03T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373745",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Информационная экология",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Жанна Сергеевна",
+                        "Виктория Вячеславовна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-113"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-03T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373747",
+                    "UF_DAY": "4",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Основы экономической культуры и финансовая грамотность",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Марина Дмитриевна"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-308"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-03T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "05.12.2025": [
+                {
+                    "ID": "93373748",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "1",
+                    "UF_DISCIPLINE": "Электроника",
+                    "UF_TIME_START": "09:30",
+                    "UF_TIME_END": "11:00",
+                    "UF_TEACHER": [
+                        "Анжела Дмитриевна",
+                        "Семен Андреевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-511"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373750",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "2",
+                    "UF_DISCIPLINE": "Элективные дисциплины по физической культуре и спорту",
+                    "UF_TIME_START": "11:15",
+                    "UF_TIME_END": "12:45",
+                    "UF_TEACHER": [
+                        "Игорь Иванович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-С/Зал"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373751",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "3",
+                    "UF_DISCIPLINE": "Теория вероятностей и математическая статистика",
+                    "UF_TIME_START": "13:00",
+                    "UF_TIME_END": "14:30",
+                    "UF_TEACHER": [
+                        "Артемий Геннадьевич"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-502"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373752",
+                    "UF_DAY": "5",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Высшая математика",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Муатаз"
+                    ],
+                    "UF_AUDIENCE": [
+                        "Н-344"
+                    ],
+                    "UF_TYPE": "Практические занятия",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-04T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ],
+            "06.12.2025": [],
+            "08.12.2025": [
+                {
+                    "ID": "93373753",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "4",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "15:10",
+                    "UF_TIME_END": "16:40",
+                    "UF_TEACHER": [
+                        "Евгения Дмитриевна",
+                        "Максим Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-358"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-07T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                },
+                {
+                    "ID": "93373755",
+                    "UF_DAY": "1",
+                    "UF_NUMBER": "5",
+                    "UF_DISCIPLINE": "Информационные технологии и программирование",
+                    "UF_TIME_START": "16:55",
+                    "UF_TIME_END": "18:25",
+                    "UF_TEACHER": [
+                        "Евгения Дмитриевна",
+                        "Максим Александрович"
+                    ],
+                    "UF_AUDIENCE": [
+                        "А-358"
+                    ],
+                    "UF_TYPE": "Лабораторные работы",
+                    "UF_IS_RETAKE": "0",
+                    "UF_GROUP": [
+                        "БББ1234"
+                    ],
+                    "UF_IS_ONLINE": "0",
+                    "UF_DATE": "2025-12-07T21:00:00-03:00",
+                    "UF_IS_FORM_CONTROL": "0"
+                }
+            ]
+        },
+        "week": [
+            {
+                "date": "17.11.2025",
+                "weekday": 1
+            },
+            {
+                "date": "18.11.2025",
+                "weekday": 2
+            },
+            {
+                "date": "19.11.2025",
+                "weekday": 3
+            },
+            {
+                "date": "20.11.2025",
+                "weekday": 4 
+            },
+            {
+                "date": "21.11.2025",
+                "weekday": 5
+            },
+            {
+                "date": "22.11.2025",
+                "weekday": 6
+            }
+        ],
+        "week_dates": [
+            "01.11.2025",
+            "03.11.2025",
+            "10.11.2025",
+            "17.11.2025",
+            "24.11.2025"
+        ],
+        "updated_at": 1763709128
+    },
+    "errors": []
+}
