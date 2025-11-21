@@ -4,7 +4,6 @@ import json
 from src.mtuci_private_api.http import HttpClient
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
-from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
 from src.mtuci_private_api.http import HttpClient, BaseHttpClient
