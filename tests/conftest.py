@@ -1,3 +1,4 @@
+from pathlib import Path
 import pytest
 import json
 
@@ -9,16 +10,23 @@ from src.mtuci_private_api.models import User
 from src.mtuci_private_api.http import HttpClient, BaseHttpClient
 from src.mtuci_private_api.schedule import ScheduleService
 
+from src.mtuci_private_api.mtuci import Mtuci
+
 from httpx import AsyncClient
 from typing import Any
 from dotenv import load_dotenv
 from os import getenv
 
+from os import getenv
+from dotenv import load_dotenv
+
 from .fixtures.attendance_http_client import fake_attendance_http_client
 from .fixtures.user_http_client import fake_user_http_client
 from .fixtures.schedule_http_client import fake_schedule_client
 
-load_dotenv(".env")
+
+if Path(".env").exists():
+    load_dotenv(".env")
 
 @pytest.fixture
 def mtuci_login() -> str:
@@ -95,6 +103,15 @@ async def schedule_service(
         )
     )
 
+@pytest.fixture
+def mtuci(
+    mtuci_login: str,
+    mtuci_password: str
+) -> Mtuci:
+    return Mtuci(
+        login=mtuci_login,
+        password=mtuci_password
+    )
 
 @pytest.fixture
 async def user_service(
