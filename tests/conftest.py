@@ -1,34 +1,39 @@
+from pathlib import Path
 import pytest
 import json
 
 from src.mtuci_private_api.http import HttpClient
 from src.mtuci_private_api.attendance import AttendanceService
 from src.mtuci_private_api.user.service import UserService
-from src.mtuci_private_api.config import app_config
 from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
 from src.mtuci_private_api.http import HttpClient, BaseHttpClient
 from src.mtuci_private_api.schedule import ScheduleService
-from src.mtuci_private_api.config import app_config
 
 from src.mtuci_private_api.mtuci import Mtuci
 
 from httpx import AsyncClient
 from typing import Any
 
+from os import getenv
+from dotenv import load_dotenv
+
 from .fixtures.attendance_http_client import fake_attendance_http_client
 from .fixtures.user_http_client import fake_user_http_client
 from .fixtures.schedule_http_client import fake_schedule_client
 
+if Path(".env").exists():
+    load_dotenv(".env")
+
 @pytest.fixture
 def mtuci_login() -> str:
-    assert (login := app_config.mtuci_login)
+    assert (login := getenv("MTUCI_LOGIN"))
 
     return login
 
 @pytest.fixture
 def mtuci_password() -> str:
-    assert (password := app_config.mtuci_password)
+    assert (password := getenv("MTUCI_PASSWORD"))
 
     return password
 
@@ -96,10 +101,13 @@ async def schedule_service(
     )
 
 @pytest.fixture
-def mtuci() -> Mtuci:
+def mtuci(
+    mtuci_login: str,
+    mtuci_password: str
+) -> Mtuci:
     return Mtuci(
-        login=app_config.mtuci_login,
-        password=app_config.mtuci_password
+        login=mtuci_login,
+        password=mtuci_password
     )
 
 @pytest.fixture
