@@ -1,7 +1,10 @@
+"""Фабрика запросов информации о пользователе"""
+
 from typing import Any
 from ...http import RequestFactory
 
 class UserInfoRequestFactory(RequestFactory):
+    """Фабрика для запросов информации о пользователе"""
 
     def create(
         self,

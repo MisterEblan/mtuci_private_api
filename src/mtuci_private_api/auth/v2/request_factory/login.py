@@ -1,3 +1,5 @@
+"""Фабрика запросов аутентификации версии 2"""
+
 from typing import Any
 from ....http import RequestFactory
 

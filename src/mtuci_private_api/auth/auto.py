@@ -21,6 +21,7 @@ class DetectedAuth(str, Enum):
     V2 = "v2"
 
 class AutoAuthService:
+    """Автоматический сервис аутентификации"""
 
     def __init__(
         self,

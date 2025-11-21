@@ -1,3 +1,5 @@
+"""Парсер HTML форм"""
+
 from typing import Any
 
 from bs4 import BeautifulSoup
@@ -8,12 +10,23 @@ from ....errors import ParseError
 class HtmlFormParser(
     Parser[str, dict[str, Any]]
 ):
+    """Парсер HTML форм"""
 
     def validate(
         self,
         obj: str,
         **kwargs: Any
     ) -> bool:
+        """Проверяет, есть ли на странице форма
+
+        Args:
+            obj: HTML-страница.
+            **kwargs: дополнительные параметры.
+                Не используются.
+
+        Returns:
+            Есть ли форма на странице.
+        """
         soup = BeautifulSoup(obj, "html.parser")
 
         if not soup.find("form"):
@@ -35,6 +48,9 @@ class HtmlFormParser(
         Returns:
             Словарь с данными из формы.
             **Также содержит ключ login_url с URL для входа.**
+
+        Raises:
+            ParseError: на странице не было найдено формы.
         """
 
         if not self.validate(obj):

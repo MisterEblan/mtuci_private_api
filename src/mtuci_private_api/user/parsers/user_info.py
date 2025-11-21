@@ -1,3 +1,5 @@
+"""Парсер информации о пользователе"""
+
 from typing import Any
 
 from ...errors import ParseError
@@ -64,7 +66,7 @@ class UserInfoParser(
             raise ParseError("ФизическоеЛицо not found")
 
         uid = personal.get("uid", "")
-        
+
         if not (name := personal.get("name", "")):
             raise ParseError("User name not found")
 

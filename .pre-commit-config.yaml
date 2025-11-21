@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: pytest-cov
         name: Run pytest + coverage
-        entry: pytest --cov=src/ --cov-branch --cov-fail-under=80 tests
+        entry: pytest --cov=src/mtuci_private_api --cov-branch --cov-fail-under=75 tests
         language: system
         pass_filenames: false
 

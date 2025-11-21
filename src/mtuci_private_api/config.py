@@ -11,12 +11,6 @@ class AppConfig(BaseSettings):
     mtuci_password: str
     mtuci_url: str = "https://lk.mtuci.ru"
 
-    user_uid: str
-    user_dep: str
-    user_group: str
-    user_spec:   str
-    user_course: str
-
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8",
     )
@@ -36,7 +30,7 @@ def setup_logging_config() -> None:
             config = safe_load(f)
 
         logging.config.dictConfig(config)
-    except Exception as err:
+    except Exception as err: # pylint: disable=W0718
         print("Error loading configuration for logging:", err)
         print("Using basic configuration")
 

@@ -1,3 +1,5 @@
+"""Парсинг сообщений об ошибках в HTML"""
+
 from typing import Any
 
 from bs4 import BeautifulSoup
@@ -44,16 +46,16 @@ class ErrorMessageParser(
             raise ParseError(f"Invalid object: {obj}")
         try:
             soup = BeautifulSoup(obj, "html.parser")
-            
+
             # Ищем стандартные элементы с ошибками Keycloak
             err = (
-                soup.find("span", {"class": "kc-feedback-text"}) or 
+                soup.find("span", {"class": "kc-feedback-text"}) or
                 soup.find("div", {"class": "alert-error"})
             )
-            
+
             if err:
                 return err.text.strip()
-            
+
             return None
-        except Exception as e:
-            raise ParseError(f"Html parsing error: {e}")
+        except Exception as err:
+            raise ParseError(f"Html parsing error: {err}") from err

@@ -68,10 +68,10 @@ class AuthServiceV2:
             login_url,
             follow_redirects=True
         )
-        
+
         if not LoginFormParser().validate(form_resp):
             raise AuthError("Не удалось получить форму входа")
-        
+
         form_data = LoginFormParser().parse(form_resp)
 
         # 4. Создаём запрос для отправки credentials
@@ -87,7 +87,7 @@ class AuthServiceV2:
         headers_backup = self.client.backup_headers()
         try:
             self.client.update_headers(request_data["headers"])
-            
+
             resp = await self.client.request(
                 Method.POST,
                 request_data["url"],
@@ -112,7 +112,7 @@ class AuthServiceV2:
                 app_config.mtuci_url,
                 follow_redirects=True
             )
-            
+
             return app_resp
 
         finally:
@@ -166,7 +166,9 @@ class AuthServiceV2:
         final_url = str(resp.url)
         if "login-error" in final_url or "message=" in final_url:
             if "message=" in final_url:
-                decoded = urllib.parse.unquote(final_url.split("message=")[-1])
+                decoded = urllib.parse.unquote(
+                    final_url.split("message=")[-1] # pylint: disable=C0207
+                )
                 raise AuthError(f"Ошибка входа в приложение: {decoded}")
             raise AuthError(f"Ошибка входа в приложение: {final_url}")
 
@@ -181,7 +183,7 @@ class AuthServiceV2:
             k.startswith("KEYCLOAK") or k.startswith("AUTH_SESSION_ID")
             for k in cookies.keys()
         )
-        
+
         if not has_keycloak:
             raise AuthError(
                 "Вход не выполнен: отсутствуют необходимые cookies"
@@ -197,4 +199,7 @@ class AuthServiceV2:
         Returns:
             True если это страница входа.
         """
-        return "kc-form-login" in (text or "") or 'name="username"' in (text or "")
+        return (
+                "kc-form-login" in (text or "") 
+                or 'name="username"' in (text or "")
+        )

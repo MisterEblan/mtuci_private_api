@@ -1,3 +1,5 @@
+"""Парсер формы для входа"""
+
 from typing import Any
 import urllib.parse
 from bs4 import BeautifulSoup, Tag
@@ -55,7 +57,9 @@ class LoginFormParser(
         form = soup.find("form", {"id": "kc-form-login"}) or soup.find("form")
         if not form:
             snippet = (obj.text or "")[:500]
-            raise ParseError(f"Login form not found {page_url}. Snippet: {snippet}")
+            raise ParseError(
+                f"Login form not found {page_url}. Snippet: {snippet}"
+            )
 
         # Извлекаем action
         action = form.get("action")
@@ -92,8 +96,10 @@ class LoginFormParser(
                 continue
 
             # Скрытые поля и важные технические поля
-            if (inp.get("type") == "hidden" or 
-                name in ("execution", "session_code", "tab_id", "credentialId")):
+            if (inp.get("type") == "hidden" or
+                name in (
+                    "execution", "session_code", "tab_id", "credentialId")
+                ):
                 hidden[name] = inp.get("value", "") or ""
             # Предзаполненные видимые поля
             elif inp.get("value"):

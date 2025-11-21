@@ -154,4 +154,4 @@ class AuthServiceV1:
             return response_2
 
         except ParseError as err:
-                raise AuthError("Error parsing Cookies") from err
+            raise AuthError("Error parsing Cookies") from err
