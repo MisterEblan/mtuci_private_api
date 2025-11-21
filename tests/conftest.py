@@ -9,6 +9,9 @@ from src.mtuci_private_api.auth import AutoAuthService
 from src.mtuci_private_api.models import User
 from src.mtuci_private_api.http import HttpClient, BaseHttpClient
 from src.mtuci_private_api.schedule import ScheduleService
+from src.mtuci_private_api.config import app_config
+
+from src.mtuci_private_api.mtuci import Mtuci
 
 from httpx import AsyncClient
 from typing import Any
@@ -92,6 +95,12 @@ async def schedule_service(
         )
     )
 
+@pytest.fixture
+def mtuci() -> Mtuci:
+    return Mtuci(
+        login=app_config.mtuci_login,
+        password=app_config.mtuci_password
+    )
 
 @pytest.fixture
 async def user_service(

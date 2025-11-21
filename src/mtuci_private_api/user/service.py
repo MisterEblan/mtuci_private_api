@@ -25,7 +25,7 @@ class UserService:
         response = await self.client.request(
             method=Method.POST,
             url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
-            json=body
+            body=body
         )
 
         if not response.is_success:
