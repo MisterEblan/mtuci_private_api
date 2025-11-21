@@ -1,11 +1,14 @@
 """Сервис получения информации о пользователе"""
 
+from httpx import RequestError
 from ..errors import GetUserInfoError, ParseError
 from ..models.mtuci import User
 from ..http import HttpClient, Method
 from ..config import app_config
 from .parsers import UserInfoParser
 from .request_factory import UserInfoRequestFactory
+
+from json.decoder import JSONDecodeError
 
 class UserService:
     """Сервис для получения информации о пользователе
@@ -40,3 +43,11 @@ class UserService:
             return user
         except ParseError as err:
             raise GetUserInfoError("Error parsing response") from err
+
+        except RequestError as err:
+            raise GetUserInfoError("Error requesting data") from err
+
+        except JSONDecodeError as err:
+            raise GetUserInfoError(
+                "Error decoding response"
+            ) from err

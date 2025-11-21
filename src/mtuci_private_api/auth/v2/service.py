@@ -14,7 +14,7 @@ from .parsers import (
 from .request_factory import LoginRequestFactoryV2
 
 import urllib.parse
-import asyncio
+# import asyncio
 
 # WARN: Сгенерировано AI.
 class AuthServiceV2:
@@ -57,7 +57,7 @@ class AuthServiceV2:
             follow_redirects=False
         )
 
-        await asyncio.sleep(self.WAIT)
+        # await asyncio.sleep(self.WAIT)
 
         # 2. Определяем URL страницы входа
         login_url = LoginUrlParser().parse(main_resp)
@@ -106,7 +106,7 @@ class AuthServiceV2:
             self._validate_cookies()
 
             # 6. Получаем финальную страницу приложения
-            await asyncio.sleep(self.WAIT)
+            # await asyncio.sleep(self.WAIT)
             app_resp = await self.client.request(
                 Method.GET,
                 app_config.mtuci_url,

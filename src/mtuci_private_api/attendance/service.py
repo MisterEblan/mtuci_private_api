@@ -1,6 +1,9 @@
 """Сервис посещаемости"""
 
+from json.decoder import JSONDecodeError
 from typing import Any
+
+from httpx import RequestError
 
 from ..http import HttpClient, Method
 from .request_factory import ProcessorRequestFactory
@@ -43,6 +46,8 @@ class AttendanceService:
             url=f"{app_config.mtuci_url}/ilk/x/getProcessor",
             body=body
         )
+        if not response.is_success:
+            raise GetAttendanceError(f"Bad status: {response.text}")
 
         data = response.json()
 
@@ -61,6 +66,14 @@ class AttendanceService:
             return subjects
         except ParseError as err:
             raise GetAttendanceError("Error parsing response") from err
+
+        except RequestError as err:
+            raise GetAttendanceError("Error requesting data") from err
+
+        except JSONDecodeError as err:
+            raise GetAttendanceError(
+                "Error decoding response"
+            ) from err
 
     async def get_subject_skips(
         self,

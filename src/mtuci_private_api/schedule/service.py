@@ -1,12 +1,16 @@
 """Сервис расписания"""
 
+from httpx import RequestError
+
 from ..http import HttpClient, Method
 from ..models import Schedule, User
 from ..config import app_config
 from ..errors import ParseError, GetScheduleError
 from .parsers import TimetableParser
 from .request_factory import TimetableRequestFactory
+
 from datetime import datetime
+from json.decoder import JSONDecodeError
 
 class ScheduleService:
     """Сервис расписания"""
@@ -46,6 +50,9 @@ class ScheduleService:
                 params=params
             )
 
+            if not response.is_success:
+                raise GetScheduleError(f"Bad status: {response.text}")
+
             schedule = TimetableParser().parse(
                 response.json(),
                 date=date
@@ -54,3 +61,11 @@ class ScheduleService:
             return schedule
         except ParseError as err:
             raise GetScheduleError("Error parsing response") from err
+
+        except RequestError as err:
+            raise GetScheduleError("Error requesting data") from err
+
+        except JSONDecodeError as err:
+            raise GetScheduleError(
+                "Error decoding response"
+            ) from err
