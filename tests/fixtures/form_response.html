@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex, nofollow">
+
+            <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Sign in to ЛК МТУСИ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="/bvzauth/resources/s6zge/login/mtuci/img/mtuci_logo.ico" />
+    <link rel="manifest" href="/resources/pwa-assets/manifest.json" crossorigin="use-credentials"/>
+            <link href="/bvzauth/resources/s6zge/common/keycloak/node_modules/@patternfly/patternfly/patternfly.min.css" rel="stylesheet" />
+            <link href="/bvzauth/resources/s6zge/common/keycloak/lib/pficon/pficon.css" rel="stylesheet" />
+            <link href="/bvzauth/resources/s6zge/login/mtuci/css/main.css" rel="stylesheet" />
+            <script src="/bvzauth/resources/s6zge/login/mtuci/js/main.js" type="text/javascript"></script>
+        <script type="module">
+            import { checkCookiesAndSetTimer } from "/bvzauth/resources/s6zge/login/mtuci/js/authChecker.js";
+
+            checkCookiesAndSetTimer(
+              "910b3223-8a14-4a04-ac76-93577147c02d",
+              "DAWHsct-8vQ",
+              "/bvzauth/realms/master/login-actions/restart?client_id=mtuci&tab_id=DAWHsct-8vQ&skip_logout=true"
+            );
+        </script>
+</head>
+
+<body class="">
+<div class="panel">
+    <div class="">
+        <header class="">
+            <img id="mtuci-logo" src="/bvzauth/resources/s6zge/login/mtuci/img/mtuci_logo.svg"/>
+                <!--<div class="" id="kc-locale">
+                    <div id="kc-locale-wrapper" class="">
+                        <div id="kc-locale-dropdown" class="">
+                            <a href="#" id="kc-current-locale-link">English</a>
+                            <ul class="">
+                                    <li class="">
+                                        <a class="" href="/bvzauth/realms/master/login-actions/authenticate?client_id=mtuci&amp;tab_id=DAWHsct-8vQ&amp;execution=471b00ee-871d-4c75-a466-4677df08d76f&amp;kc_locale=ru">Русский</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="" href="/bvzauth/realms/master/login-actions/authenticate?client_id=mtuci&amp;tab_id=DAWHsct-8vQ&amp;execution=471b00ee-871d-4c75-a466-4677df08d76f&amp;kc_locale=en">English</a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>-->
+                <h1 id="kc-page-title">      Sign in to your account
+
+</h1>
+      </header>
+      <div id="kc-content">
+        <div id="kc-content-wrapper">
+
+
+        <div id="kc-form">
+          <div id="kc-form-wrapper">
+                <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="https://lk.mtuci.ru/bvzauth/realms/master/login-actions/authenticate?session_code=9wuDXISoYMPZiha1fItzDDLVIoFyexN0Pq0r1P0pYw8&amp;execution=471b00ee-871d-4c75-a466-4677df08d76f&amp;client_id=mtuci&amp;tab_id=DAWHsct-8vQ" method="post">
+                        <div class="form-area">
+                            <input tabindex="1" id="username" placeholder=" " class="form-input" name="username" value=""  type="text" autofocus autocomplete="off"
+                                   aria-invalid=""
+                            />
+
+                            <label for="username" class="">Email</label>
+
+                        </div>
+
+                    <div class="form-area">
+                        <div class="form-input-group">
+                            <input tabindex="2" id="password" placeholder=" " class="form-input" name="password" type="password" autocomplete="off"
+                                   aria-invalid=""
+                            />
+                            <label for="password" class="">Password</label>
+                            <button class="password-unhide" type="button" aria-label="Show password"
+                                    aria-controls="password"  data-password-toggle
+                                    data-icon-show="fa fa-eye" data-icon-hide="fa fa-eye-slash"
+                                    data-label-show="Show password" data-label-hide="Hide password">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                    <div id="kc-form-options-area" class="form-area form-setting d-flex justify-between flex-wrap align-center gap-small">
+                        <div id="kc-form-options">
+                                <div class="checkbox">
+                                    <label>
+                                            <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-option">
+                                    <span><a tabindex="5" href="/bvzauth/realms/master/login-actions/reset-credentials?client_id=mtuci&amp;tab_id=DAWHsct-8vQ">Forgot Password?</a></span>
+                            </div>
+
+                      </div>
+
+
+                      <div id="kc-form-buttons" class="form-buttons">
+                          <input type="hidden" id="id-hidden-input" name="credentialId" />
+                          <input id="login-submit-button" tabindex="4" class="button primary  width-100" name="login" id="kc-login" type="submit" value="Sign In"/>
+                      </div>
+                </form>
+                <a class="d-flex mt-small" href="https://mtuci.ru/students/get_email" target="_blank">Информация для входа студентам</a>
+            </div>
+        </div>
+        <script type="module" src="/bvzauth/resources/s6zge/login/mtuci/js/passwordVisibility.js"></script>
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

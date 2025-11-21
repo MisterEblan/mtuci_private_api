@@ -1,11 +1,15 @@
 """Сервис автоматического выбора версии аутентификации"""
 
 from enum import Enum
-from httpx import AsyncClient, Response
+from httpx import Response
 
-from .service_v1 import AuthServiceV1
-from .service_v2 import AuthServiceV2
+from .v1 import AuthServiceV1
+
+from .v2 import AuthServiceV2
 from ..errors import AuthError
+
+from ..http import BaseHttpClient
+
 
 import logging
 
@@ -22,8 +26,8 @@ class AutoAuthService:
         self,
         login: str,
         password: str,
-        client: AsyncClient
-    ): # pragma: no cover
+        client: BaseHttpClient
+    ):
         self.login = login
         self.password = password
         self.client   = client
@@ -55,7 +59,7 @@ class AutoAuthService:
                 return await AuthServiceV2(
                     login=self.login,
                     password=self.password,
-                    client=self.client
+                    client=self.client,
                 ).auth()
             except AuthError as err:
                 logger.error("Error with auth V2: %s", err)
@@ -69,6 +73,7 @@ class AutoAuthService:
             ).auth()
 
             self._detected = DetectedAuth.V1
+            logger.info("Detected V1")
             return response
         except AuthError as err:
             logger.error("Error detecting V1: %s", err)
@@ -76,9 +81,10 @@ class AutoAuthService:
             response = await AuthServiceV2(
                 login=self.login,
                 password=self.password,
-                client=self.client
+                client=self.client,
             ).auth()
 
+            logger.info("Detected V2")
             self._detected = DetectedAuth.V2
 
             return response

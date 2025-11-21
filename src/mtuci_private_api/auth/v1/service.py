@@ -1,12 +1,14 @@
 """Изначальный сервис аутентфикации"""
 
-from typing import Any
-from httpx import URL, AsyncClient, Response
+from httpx import Response
 
-from ..errors import AuthError
-from ..config import app_config
+from .parsers import HtmlFormParser, CookieParser
+from .request_factory import LoginRequestFactoryV1
 
-from bs4 import BeautifulSoup
+from ...http import Method, BaseHttpClient
+
+from ...errors import AuthError, ParseError
+from ...config import app_config
 
 import urllib.parse
 import asyncio
@@ -25,19 +27,18 @@ class AuthServiceV1:
         WAIT: время в секундах,
             которое нужно подождать перед отправкой следующего запроса.
     """
+    FAIL_MESSAGE = "invalid username or password"
+    WAIT = 1
 
     def __init__(
         self,
         login: str,
         password: str,
-        client: AsyncClient
-    ): # pragma: no cover
+        client: BaseHttpClient
+    ):
         self.login = login
         self.password = password
         self.client = client
-
-        self.FAIL_MESSAGE = "invalid username or password"
-        self.WAIT = 1
 
     async def auth(self) -> Response:
         """Аутентификация
@@ -49,24 +50,20 @@ class AuthServiceV1:
 
         text = response.text
 
-        soup = BeautifulSoup(text, "html.parser")
+        data = HtmlFormParser().parse(
+            text
+        )
 
-        if not (form := soup.find("form")):
-            raise AuthError("Form not found")
-
-        data = {}
-        for inp in form.find_all("input"):
-            name = inp.get("name")
-            value = inp.get("value", "")
-            if name:
-                data[name] = value
-
+        login_url = data.pop("login_url")
         data["username"] = self.login
         data["password"] = self.password
 
-        login_url = URL(form["action"])
-
-        response = await self.client.post(login_url, data=data)
+        response = await self.client.request(
+            method=Method.POST,
+            url=login_url,
+            data=data,
+            body={}
+        )
 
         if not self._is_success(response):
             raise AuthError("Invalid credentials")
@@ -90,18 +87,6 @@ class AuthServiceV1:
 
         return self.FAIL_MESSAGE not in text.lower()
 
-    def _make_body(self) -> dict[str, Any]:
-        """Создаёт тело запроса аутентификации
-
-        Returns:
-            Словарь с телом запроса.
-        """
-        return {
-            "username": self.login,
-            "password": self.password,
-            "rememberMe": "on",
-            "credentialId": ""
-        }
 
     #WARN: Сгенерировано AI
     def _get_jhash(self, code: int) -> int:
@@ -127,37 +112,46 @@ class AuthServiceV1:
         Returns:
             Ответ от сервера после первичного входа.
         """
-        body = self._make_body()
-        response_1 = await self.client.post(
+        body = LoginRequestFactoryV1().create(
+            login=self.login,
+            password=self.password
+        )
+        response_1 = await self.client.request(
+            method=Method.POST,
             url=app_config.mtuci_url + \
                 "/bvzauth/realms/master/login-actions/authenticate",
-            data=body
+            data=body,
+            body={}
         )
 
-        raw = response_1.cookies.get("__js_p_")
+        try:
+            cookies_ints = CookieParser().parse(response_1)
 
-        if not raw:
-            logger.debug(response_1.text)
-            raise AuthError("Cookies not received")
+            code = cookies_ints[0]
 
-        raw_splitted = raw.split(",")
+            jhash = self._get_jhash(code)
 
-        code = int(raw_splitted[0])
-        age  = int(raw_splitted[1])
-        sec  = int(raw_splitted[2])
+            self.client.cookies.set(
+                "__jhash_",
+                str(jhash),
+                domain="lk.mtuci.ru",
+                path="/"
+            )
+            self.client.cookies.set(
+                "__jua_",
+                urllib.parse.quote(self.client.headers.get("User-Agent")),
+                domain="lk.mtuci.ru",
+                path="/"
+            )
 
-        jhash = self._get_jhash(code)
+            await asyncio.sleep(self.WAIT)
 
-        self.client.cookies.set("__jhash_", str(jhash), domain="lk.mtuci.ru", path="/")
-        self.client.cookies.set(
-            "__jua_",
-            urllib.parse.quote(self.client.headers.get("User-Agent")),
-            domain="lk.mtuci.ru",
-            path="/"
-        )
+            response_2 = await self.client.request(
+                method=Method.GET,
+                url=app_config.mtuci_url
+            )
 
-        await asyncio.sleep(self.WAIT)
+            return response_2
 
-        response_2 = await self.client.get(app_config.mtuci_url)
-
-        return response_2
+        except ParseError as err:
+                raise AuthError("Error parsing Cookies") from err
