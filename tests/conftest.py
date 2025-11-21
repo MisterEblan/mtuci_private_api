@@ -12,20 +12,24 @@ from src.mtuci_private_api.schedule import ScheduleService
 
 from httpx import AsyncClient
 from typing import Any
+from dotenv import load_dotenv
+from os import getenv
 
 from .fixtures.attendance_http_client import fake_attendance_http_client
 from .fixtures.user_http_client import fake_user_http_client
 from .fixtures.schedule_http_client import fake_schedule_client
 
+load_dotenv(".env")
+
 @pytest.fixture
 def mtuci_login() -> str:
-    assert (login := app_config.mtuci_login)
+    assert (login := getenv("MTUCI_LOGIN"))
 
     return login
 
 @pytest.fixture
 def mtuci_password() -> str:
-    assert (password := app_config.mtuci_password)
+    assert (password := getenv("MTUCI_PASSWORD"))
 
     return password
 

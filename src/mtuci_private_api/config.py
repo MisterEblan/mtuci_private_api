@@ -1,19 +1,17 @@
 """Конфигурация приложения"""
 
 from pathlib import Path
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
 from yaml import safe_load
 import logging.config
 
 class AppConfig(BaseSettings):
     """Конфигурация"""
-    mtuci_login: str
-    mtuci_password: str
     mtuci_url: str = "https://lk.mtuci.ru"
 
-    model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8",
-    )
+    # model_config = SettingsConfigDict(
+    #     env_file=".env", env_file_encoding="utf-8",
+    # )
 
 def setup_logging_config() -> None:
     """Загрузка конфига для логирования"""
