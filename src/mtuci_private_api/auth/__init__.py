@@ -1,6 +1,6 @@
 """Модуль для работы с аутентификацией"""
 
-from .service_v1 import AuthServiceV1
+from .v1 import AuthServiceV1
 from .v2 import AuthServiceV2
 from .auto import AutoAuthService
 

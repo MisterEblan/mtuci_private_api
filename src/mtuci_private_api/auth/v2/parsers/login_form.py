@@ -27,7 +27,7 @@ class LoginFormParser(
         if obj.status_code != 200:
             return False
         text = obj.text or ""
-        return "kc-form-login" in text or 'name="username"' in text
+        return "kc-form-login" in text or "name=\"username\"" in text
 
     def parse(
             self,

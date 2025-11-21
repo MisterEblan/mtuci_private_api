@@ -3,16 +3,9 @@
 from enum import Enum
 from httpx import Response
 
-from .service_v1 import AuthServiceV1
+from .v1 import AuthServiceV1
 
 from .v2 import AuthServiceV2
-from .v2.parsers import (
-    ErrorMessageParser,
-    LoginFormParser,
-    LoginUrlParser
-)
-from .v2.request_factory import LoginRequestFactory
-
 from ..errors import AuthError
 
 from ..http import BaseHttpClient
@@ -28,12 +21,6 @@ class DetectedAuth(str, Enum):
     V2 = "v2"
 
 class AutoAuthService:
-
-    parsers = {
-        "error_parser": ErrorMessageParser(),
-        "login_url_parser": LoginUrlParser(),
-        "login_form_parser": LoginFormParser(),
-    }
 
     def __init__(
         self,
@@ -73,8 +60,6 @@ class AutoAuthService:
                     login=self.login,
                     password=self.password,
                     client=self.client,
-                    **self.parsers,
-                    request_factory=LoginRequestFactory()
                 ).auth()
             except AuthError as err:
                 logger.error("Error with auth V2: %s", err)
@@ -88,6 +73,7 @@ class AutoAuthService:
             ).auth()
 
             self._detected = DetectedAuth.V1
+            logger.info("Detected V1")
             return response
         except AuthError as err:
             logger.error("Error detecting V1: %s", err)
@@ -96,10 +82,9 @@ class AutoAuthService:
                 login=self.login,
                 password=self.password,
                 client=self.client,
-                **self.parsers,
-                request_factory=LoginRequestFactory()
             ).auth()
 
+            logger.info("Detected V2")
             self._detected = DetectedAuth.V2
 
             return response

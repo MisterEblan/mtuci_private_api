@@ -1,7 +1,7 @@
 from typing import Any
 from ....http import RequestFactory
 
-class LoginRequestFactory(RequestFactory):
+class LoginRequestFactoryV2(RequestFactory):
     """Фабрика для создания запросов аутентификации"""
 
     required = [

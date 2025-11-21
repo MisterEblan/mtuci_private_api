@@ -1,7 +1,7 @@
 """Фабрики запросов"""
 
-from .login import LoginRequestFactory
+from .login import LoginRequestFactoryV2
 
 __all__ = [
-    "LoginRequestFactory"
+    "LoginRequestFactoryV2"
 ]

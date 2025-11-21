@@ -11,7 +11,7 @@ from .parsers import (
     LoginUrlParser,
     LoginFormParser
 )
-from .request_factory import LoginRequestFactory
+from .request_factory import LoginRequestFactoryV2
 
 import urllib.parse
 import asyncio
@@ -27,31 +27,19 @@ class AuthServiceV2:
         login: логин пользователя.
         password: пароль пользователя.
         client: HTTP-клиент для запросов.
-        login_url_parser: парсер URL страницы входа.
-        login_form_parser: парсер формы входа.
-        error_parser: парсер сообщений об ошибках.
-        request_factory: фабрика запросов аутентификации.
         WAIT: задержка между запросами в секундах.
     """
     WAIT = 1
 
     def __init__(
         self,
-        login: str,
+        login:    str,
         password: str,
-        client:       BaseHttpClient,
-        login_url_parser:  LoginUrlParser,
-        login_form_parser: LoginFormParser,
-        error_parser:      ErrorMessageParser,
-        request_factory:   LoginRequestFactory
+        client:   BaseHttpClient,
     ):
         self.login = login
         self.password = password
         self.client = client
-        self.login_url_parser = login_url_parser
-        self.login_form_parser = login_form_parser
-        self.error_parser = error_parser
-        self.request_factory = request_factory
 
     async def auth(self) -> Response:
         """Выполняет полный цикл аутентификации
@@ -72,7 +60,7 @@ class AuthServiceV2:
         await asyncio.sleep(self.WAIT)
 
         # 2. Определяем URL страницы входа
-        login_url = self.login_url_parser.parse(main_resp)
+        login_url = LoginUrlParser().parse(main_resp)
 
         # 3. Получаем форму входа
         form_resp = await self.client.request(
@@ -81,13 +69,13 @@ class AuthServiceV2:
             follow_redirects=True
         )
         
-        if not self.login_form_parser.validate(form_resp):
+        if not LoginFormParser().validate(form_resp):
             raise AuthError("Не удалось получить форму входа")
         
-        form_data = self.login_form_parser.parse(form_resp)
+        form_data = LoginFormParser().parse(form_resp)
 
         # 4. Создаём запрос для отправки credentials
-        request_data = self.request_factory.create(
+        request_data = LoginRequestFactoryV2().create(
             action_url=form_data["action_url"],
             hidden_fields=form_data["hidden_fields"],
             form_page_url=form_data["page_url"],
@@ -169,7 +157,7 @@ class AuthServiceV2:
         """
         # Проверяем, не вернулись ли мы на форму входа
         if resp.status_code == 200 and self._is_login_page(resp.text):
-            error_msg = self.error_parser.parse(resp.text)
+            error_msg = ErrorMessageParser().parse(resp.text)
             if error_msg:
                 raise AuthError(f"Ошибка входа: {error_msg}")
             raise AuthError("Ошибка входа: форма входа отображена повторно")

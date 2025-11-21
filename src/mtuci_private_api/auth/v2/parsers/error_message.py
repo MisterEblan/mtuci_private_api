@@ -40,16 +40,20 @@ class ErrorMessageParser(
         Raises:
             ParseError: если HTML некорректный.
         """
+        if not self.validate(obj):
+            raise ParseError(f"Invalid object: {obj}")
         try:
             soup = BeautifulSoup(obj, "html.parser")
             
             # Ищем стандартные элементы с ошибками Keycloak
-            err = (soup.find("span", {"class": "kc-feedback-text"}) or 
-                   soup.find("div", {"class": "alert-error"}))
+            err = (
+                soup.find("span", {"class": "kc-feedback-text"}) or 
+                soup.find("div", {"class": "alert-error"})
+            )
             
             if err:
                 return err.text.strip()
             
             return None
         except Exception as e:
-            raise ParseError(f"Ошибка парсинга HTML: {e}")
+            raise ParseError(f"Html parsing error: {e}")
