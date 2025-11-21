@@ -1,0 +1,36 @@
+name: Run tests
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Export env variables
+        run: |
+          echo "MTUCI_LOGIN=${{ secrets.MTUCI_LOGIN }}" >> $GITHUB_ENV
+          echo "MTUCI_PASSWORD=${{ secrets.MTUCI_PASSWORD }}" >> $GITHUB_ENV
+
+      - name: Run tests with coverage
+        run: |
+          uv run pytest \
+            --cov=./ \
+            --cov-report=xml \
+            --cov-fail-under=70
