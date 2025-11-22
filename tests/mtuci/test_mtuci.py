@@ -45,13 +45,9 @@ class TestMtuci:
 
     async def test_management(
         self,
-        mtuci_login: str,
-        mtuci_password: str
+        mtuci: Mtuci,
     ):
-        async with Mtuci(
-            login=mtuci_login,
-            password=mtuci_password
-        ) as mtuci:
+        async with mtuci:
             user = await mtuci.get_user_info()
             attendance = await mtuci.get_attendace()
             schedule = await mtuci.get_schedule(datetime(2025, 11, 21))
