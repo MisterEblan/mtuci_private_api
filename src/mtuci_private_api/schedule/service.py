@@ -18,14 +18,13 @@ class ScheduleService:
     def __init__(
         self,
         client: HttpClient,
-        user_info: User
     ):
         self.client = client
-        self.user_info = user_info
 
     async def get_schedule(
         self,
-        date: datetime
+        date: datetime,
+        user_info: User
     ) -> Schedule:
         """Получает расписание на указанную дату
 
@@ -41,7 +40,7 @@ class ScheduleService:
         """
         try:
             params = TimetableRequestFactory().create(
-                user_group=self.user_info.group,
+                user_group=user_info.group,
                 date=date
             )
             response = await self.client.request(

@@ -44,13 +44,16 @@ class Mtuci(AbstractMtuci):
         self.client_factory = client_factory
         self.client = client_factory.create()
 
+        self.user_info: User | None = None
+
         self.auth_service = AutoAuthService(
             login=self.login,
             password=self.password,
             client=self.client
         )
         self.attendance_service = AttendanceService(self.client)
-        self.user_service = UserService(self.client)
+        self.user_service       = UserService(self.client)
+        self.schedule_service   = ScheduleService(self.client)
 
     async def auth(
         self,
@@ -91,11 +94,6 @@ class Mtuci(AbstractMtuci):
             user = await self.user_service.get_user_info()
 
             self.user_info = user
-            self.schedule_service = ScheduleService(
-                self.client,
-                user_info=user
-            )
-
             return user
 
 
@@ -135,20 +133,14 @@ class Mtuci(AbstractMtuci):
                 о посещаемости.
         """
 
-        if not hasattr(self, "user_info"):
-            raise ValueError(
-                "Not found user info. You should request via get_user_info"
-            )
+        user = await self.get_user_info()
 
-        if not hasattr(self, "schedule_service"):
-            raise ValueError(
-                "Not found schedule service. " + \
-                    "You should invok get_user_info first"
-            )
+        return await self.schedule_service.get_schedule(
+            date,
+            user
+        )
 
-        return await self.schedule_service.get_schedule(date)
-
-    async def __aenter__(self):
+    async def __aenter__(self) -> "Mtuci":
         await self.auth()
         self.user_info = await self.get_user_info()
 
@@ -159,5 +151,5 @@ class Mtuci(AbstractMtuci):
         exc_type,
         exc,
         tb
-    ):
+    ) -> None:
         self.client = self.client_factory.create()

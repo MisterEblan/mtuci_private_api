@@ -93,14 +93,6 @@ async def schedule_service(
 ) -> ScheduleService:
     return ScheduleService(
         client=fake_schedule_client,
-        user_info=User(
-            uid="",
-            name="Unknown",
-            group="БИК2404",
-            speciality="",
-            course="Второй",
-            department="РиТ"
-        )
     )
 
 @pytest.fixture

@@ -1,5 +1,5 @@
 from src.mtuci_private_api.schedule import ScheduleService
-from src.mtuci_private_api.models import Schedule
+from src.mtuci_private_api.models import Schedule, User
 
 from datetime import datetime
 
@@ -10,7 +10,15 @@ class TestScheduleService:
         schedule_service: ScheduleService
     ):
         schedule = await schedule_service.get_schedule(
-            date=datetime(2025, 11, 21)
+            date=datetime(2025, 11, 21),
+            user_info=User(
+                uid=None,
+                name="",
+                department="",
+                group="БББ1234",
+                course="Второй",
+                speciality=""
+            )
         )
 
         print(schedule)
