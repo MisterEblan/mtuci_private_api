@@ -23,6 +23,7 @@ from dotenv import load_dotenv
 from .fixtures.attendance_http_client import fake_attendance_http_client
 from .fixtures.user_http_client import fake_user_http_client
 from .fixtures.schedule_http_client import fake_schedule_client
+from .fixtures.fake_auth_service import FakeAuthService, fake_auth_service
 
 
 if Path(".env").exists():
@@ -98,12 +99,22 @@ async def schedule_service(
 @pytest.fixture
 def mtuci(
     mtuci_login: str,
-    mtuci_password: str
+    mtuci_password: str,
+    fake_auth_service: FakeAuthService,
+    fake_user_http_client: HttpClient,
+    fake_attendance_http_client: HttpClient,
+    fake_schedule_client: HttpClient
 ) -> Mtuci:
-    return Mtuci(
+    mtuci = Mtuci(
         login=mtuci_login,
         password=mtuci_password
     )
+    mtuci.auth_service = fake_auth_service
+    mtuci.user_service.client = fake_user_http_client
+    mtuci.attendance_service.client = fake_attendance_http_client
+    mtuci.schedule_service.client = fake_schedule_client
+
+    return mtuci
 
 @pytest.fixture
 async def user_service(

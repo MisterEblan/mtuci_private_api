@@ -1,5 +1,4 @@
 from datetime import datetime
-import json
 from src.mtuci_private_api.mtuci import Mtuci
 
 class TestMtuci:
@@ -21,16 +20,16 @@ class TestMtuci:
         assert user, \
         f"Ожидался не пустой объект. Получили {user}"
 
-    # async def test_get_attendance(
-    #     self,
-    #     mtuci: Mtuci
-    # ):
-    #     await mtuci.auth()
-    #
-    #     attendance = await mtuci.get_attendace()
-    #
-    #     assert attendance, \
-    #     f"Ожидался не пустой объект. Получили {attendance}"
+    async def test_get_attendance(
+        self,
+        mtuci: Mtuci
+    ):
+        await mtuci.auth()
+
+        attendance = await mtuci.get_attendace()
+
+        assert attendance, \
+        f"Ожидался не пустой объект. Получили {attendance}"
 
     async def test_get_schedule(
         self,
@@ -54,10 +53,10 @@ class TestMtuci:
             password=mtuci_password
         ) as mtuci:
             user = await mtuci.get_user_info()
-            # attendance = await mtuci.get_attendace()
-            # schedule = await mtuci.get_schedule(datetime(2025, 11, 21))
+            attendance = await mtuci.get_attendace()
+            schedule = await mtuci.get_schedule(datetime(2025, 11, 21))
 
 
         assert user
-        # assert attendance
-        # assert schedule
+        assert attendance
+        assert schedule
