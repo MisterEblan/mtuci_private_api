@@ -15,6 +15,10 @@ from ..models import (
     Attendance
 )
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class Mtuci(AbstractMtuci):
     """Класс, предаставляющий собой МТУСИ
 
@@ -70,6 +74,7 @@ class Mtuci(AbstractMtuci):
         Raises:
             AuthError: ошибка при входе в аккаунт.
         """
+        logger.info("Authenticating")
         await self.auth_service.auth()
 
     async def get_user_info(
@@ -88,9 +93,15 @@ class Mtuci(AbstractMtuci):
             GetUserInfoError: ошибка при получении информации.
         """
 
-        if hasattr(self, "user_info") and self.user_info:
+        logger.info("Getting user info")
+
+        if self.user_info:
+            logger.info("Already have user info")
             return self.user_info
         else:
+            logger.info(
+                "User info not found. Requesting"
+            )
             user = await self.user_service.get_user_info()
 
             self.user_info = user
@@ -113,6 +124,7 @@ class Mtuci(AbstractMtuci):
         Raises:
             GetScheduleError: ошибка при получении расписания.
         """
+        logger.info("Getting attendance")
         return await self.attendance_service.get_attendance()
 
     async def get_schedule(
@@ -121,6 +133,8 @@ class Mtuci(AbstractMtuci):
         **kwargs: Any
     ) -> Schedule:
         """Получение посещаемости
+
+        Имеет побочный эффект: вызывает get_user_info.
 
         Args:
             **kwargs: дополнительные параметры.
@@ -131,7 +145,9 @@ class Mtuci(AbstractMtuci):
         Raises:
             GetAttendanceError: ошибка при получении информации
                 о посещаемости.
+            GetUserInfoError: ошибка при получении информации о пользователе.
         """
+        logger.info("Getting schedule for %s", date)
 
         user = await self.get_user_info()
 
@@ -141,6 +157,7 @@ class Mtuci(AbstractMtuci):
         )
 
     async def __aenter__(self) -> "Mtuci":
+        logger.debug("Entering context")
         await self.auth()
         self.user_info = await self.get_user_info()
 
@@ -152,4 +169,5 @@ class Mtuci(AbstractMtuci):
         exc,
         tb
     ) -> None:
+        logger.debug("Exiting context, recreating client")
         self.client = self.client_factory.create()

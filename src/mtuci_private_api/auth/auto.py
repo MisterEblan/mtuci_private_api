@@ -10,7 +10,6 @@ from ..errors import AuthError
 
 from ..http import BaseHttpClient
 
-
 import logging
 
 logger = logging.getLogger(__name__)
@@ -44,6 +43,7 @@ class AutoAuthService:
         Returns:
             Ответ от сервера.
         """
+        logger.info("Detecting auth version")
         if self._detected == DetectedAuth.V1:
             try:
                 return await AuthServiceV1(
@@ -77,7 +77,7 @@ class AutoAuthService:
             logger.info("Detected V1")
             return response
         except AuthError as err:
-            logger.error("Error detecting V1: %s", err)
+            logger.error("Error while trying V1: %s", err)
 
             response = await AuthServiceV2(
                 login=self.login,
