@@ -1,3 +1,7 @@
+![Tests](https://github.com/MisterEblan/mtuci_private_api/actions/workflows/tests.yaml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.12+-blue.svg)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
 # MTUCI Private API
 
 Данная библиотека позволяет работать с ЛК МТУСИ из кода Python.<br>
