@@ -44,7 +44,7 @@
 ```Python
 import asyncio
 from datetime import datetime
-from src.mtuci_private_api import Mtuci
+from mtuci_private_api import Mtuci
 
 async def main():
     async with Mtuci(
